@@ -24,94 +24,46 @@ These results come from one run using one model and one system instruction. They
 Results:
 - results.json: Recorded model responses
 - results.csv: CSV output
-- results_reviewed.csv: Manually reviewed results
+- results_reviewed.csv: A saved copy with manual reviews for all 20 tests. I kept this separate because running the script again overwrites results.csv.
 - results_week1.json: Original two-test experiment
 
-## Setup Guide
+## Setup
 
-## 1. Check that Python is installed
+You'll need Python 3.10+ and an OpenAI API key.
 
-Open a terminal (Mac: Terminal, Windows: PowerShell) and type:
+### 1. Install dependencies
 
-```
-python --version
-```
-
-If you see `Python 3.10` or higher, you're set. If not, download and
-install it from [python.org/downloads](https://www.python.org/downloads/).
-
-## 2. Code editor
-
-Use VS Code (if you don't have it, get it free from
-[code.visualstudio.com](https://code.visualstudio.com/)). Open this folder
-in VS Code.
-
-## 3. Create a virtual environment
-
-A virtual environment isolates this project's dependencies from other
-projects on your machine. In the terminal, inside this folder:
-
-```
+```bash
 python -m venv venv
 ```
 
-Then activate it:
+Activate the environment:
 
-- Mac/Linux: `source venv/bin/activate`
 - Windows PowerShell: `.\venv\Scripts\Activate.ps1`
+- Mac/Linux: `source venv/bin/activate`
 
-If you see `(venv)` at the start of your terminal line, you're good.
+Then install the packages:
 
-## 4. Install dependencies
-
-```
+```bash
 pip install -r requirements.txt
 ```
 
-## 5. Get an OpenAI API key
+### 2. Add your API key
 
-1. Go to [platform.openai.com](https://platform.openai.com/) and create an account.
-2. Go to the "API keys" section and create a new key.
-3. Check your API billing settings before running tests.
+Copy `.env.example` to a new file called `.env` and add your OpenAI API key.
 
-## 6. Create the `.env` file
+The `.gitignore` file keeps `.env` out of Git. Never commit your API key.
 
-Copy `.env.example` to a new file named `.env`, and paste your key inside:
+### 3. Run the tests
 
-```
-OPENAI_API_KEY=your_api_key_here
-```
-
-**Important:** never commit `.env` to GitHub (the included `.gitignore` file
-takes care of this).
-
-## 7. Run the script
-
-```
+```bash
 python main.py
 ```
 
-The script runs 20 tests across five categories and saves the responses to results.json, results.csv, and summary.md.
+The script runs 20 test cases and saves the responses to `results.json`, `results.csv`, and `summary.md`.
 
-## 8. Push to GitHub
+Running the tests uses the OpenAI API and may incur charges.
 
-The project includes a `.gitignore` file so your API key and virtual environment stay out of Git.
-
-If you're starting a new repository:
-
-```bash
-git init
-git branch -M main
-git add .
-git commit -m "Add prompt injection testing project"
-```
-
-Create an empty repository on GitHub, connect it to your local project, and push:
-
-```bash
-git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
-git push -u origin main
-```
 ## Next Steps
 
 - Test different system prompts to see whether stronger instructions change the results.
@@ -119,5 +71,7 @@ git push -u origin main
 - Repeat experiments to check how consistent the responses are.
 - Compare results across different models, including Claude and Gemini.
 - Explore more realistic indirect prompt injection scenarios using untrusted documents.
+
+
 
 
