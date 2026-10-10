@@ -1,93 +1,8 @@
-# LLM Prompt Injection & Jailbreak Playground — Setup Guide (From Scratch)
+# LLM Prompt Injection & Jailbreak Playground
 
-This guide is written for someone who has never set up a Python project
-before. Follow the steps in order.
+I started this project to learn more about prompt injection and jailbreak attacks, and to see how LLMs respond when someone tries to make them ignore their instructions.
 
-## 1. Check that Python is installed
-
-Open a terminal (Mac: Terminal, Windows: PowerShell) and type:
-
-```
-python3 --version
-```
-
-If you see `Python 3.10` or higher, you're set. If not, download and
-install it from [python.org/downloads](https://www.python.org/downloads/).
-
-## 2. Code editor
-
-Use VS Code (if you don't have it, get it free from
-[code.visualstudio.com](https://code.visualstudio.com/)). Open this folder
-in VS Code.
-
-## 3. Create a virtual environment
-
-A virtual environment isolates this project's dependencies from other
-projects on your machine. In the terminal, inside this folder:
-
-```
-python3 -m venv venv
-```
-
-Then activate it:
-
-- Mac/Linux: `source venv/bin/activate`
-- Windows: `venv\Scripts\activate`
-
-If you see `(venv)` at the start of your terminal line, you're good.
-
-## 4. Install dependencies
-
-```
-pip install -r requirements.txt
-```
-
-## 5. Get an OpenAI API key
-
-1. Go to [platform.openai.com](https://platform.openai.com/) and create an account.
-2. Go to the "API keys" section and create a new key.
-3. Add a small amount of credit (5-10 USD) — `gpt-4o-mini` is very cheap,
-   hundreds of test calls will cost only a few cents.
-
-## 6. Create the `.env` file
-
-Copy `.env.example`, rename it to `.env`, and paste your key inside:
-
-```
-OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxx
-```
-
-**Important:** never commit `.env` to GitHub (the `.gitignore` step below
-takes care of this).
-
-## 7. Run the script
-
-```
-python3 main.py
-```
-
-The script runs 20 tests across five categories and saves the responses to results.json, results.csv, and summary.md.
-
-## 8. Push to GitHub
-
-Make sure `.env`, `venv/`, and local backup files are excluded by `.gitignore`.
-
-To create a local Git repository and commit the project:
-
-```bash
-git init
-git branch -M main
-git add .
-git commit -m "Add prompt injection testing project"
-
-```
-## Next Steps
-
-- Test different system prompts to see whether stronger instructions change the results.
-- Improve the automatic evaluation to reduce false positives.
-- Repeat experiments to check how consistent the responses are.
-- Compare results across different models, including Claude and Gemini.
-- Explore more realistic indirect prompt injection scenarios using untrusted documents.
+I began with a simple Python script using the OpenAI API. The first version had just two tests, but I've since expanded it to 20 prompts across five categories. I'm using the results to understand which approaches work, which don't, and why.
 
 ## Initial Findings (October 2026)
 
@@ -112,7 +27,97 @@ Results:
 - results_reviewed.csv: Manually reviewed results
 - results_week1.json: Original two-test experiment
 
+## Setup Guide
 
+## 1. Check that Python is installed
 
+Open a terminal (Mac: Terminal, Windows: PowerShell) and type:
+
+```
+python --version
+```
+
+If you see `Python 3.10` or higher, you're set. If not, download and
+install it from [python.org/downloads](https://www.python.org/downloads/).
+
+## 2. Code editor
+
+Use VS Code (if you don't have it, get it free from
+[code.visualstudio.com](https://code.visualstudio.com/)). Open this folder
+in VS Code.
+
+## 3. Create a virtual environment
+
+A virtual environment isolates this project's dependencies from other
+projects on your machine. In the terminal, inside this folder:
+
+```
+python -m venv venv
+```
+
+Then activate it:
+
+- Mac/Linux: `source venv/bin/activate`
+- Windows PowerShell: `.\venv\Scripts\Activate.ps1`
+
+If you see `(venv)` at the start of your terminal line, you're good.
+
+## 4. Install dependencies
+
+```
+pip install -r requirements.txt
+```
+
+## 5. Get an OpenAI API key
+
+1. Go to [platform.openai.com](https://platform.openai.com/) and create an account.
+2. Go to the "API keys" section and create a new key.
+3. Check your API billing settings before running tests.
+
+## 6. Create the `.env` file
+
+Copy `.env.example` to a new file named `.env`, and paste your key inside:
+
+```
+OPENAI_API_KEY=your_api_key_here
+```
+
+**Important:** never commit `.env` to GitHub (the included `.gitignore` file
+takes care of this).
+
+## 7. Run the script
+
+```
+python main.py
+```
+
+The script runs 20 tests across five categories and saves the responses to results.json, results.csv, and summary.md.
+
+## 8. Push to GitHub
+
+The project includes a `.gitignore` file so your API key and virtual environment stay out of Git.
+
+If you're starting a new repository:
+
+```bash
+git init
+git branch -M main
+git add .
+git commit -m "Add prompt injection testing project"
+```
+
+Create an empty repository on GitHub, connect it to your local project, and push:
+
+```bash
+git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
+git push -u origin main
+```
+## Next Steps
+
+- Test different system prompts to see whether stronger instructions change the results.
+- Improve the automatic evaluation to reduce false positives.
+- Repeat experiments to check how consistent the responses are.
+- Compare results across different models, including Claude and Gemini.
+- Explore more realistic indirect prompt injection scenarios using untrusted documents.
 
 
