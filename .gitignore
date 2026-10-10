@@ -1,0 +1,19 @@
+# API keys
+.env
+.env.*
+
+# Virtual environments
+venv/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Editor files
+.vscode/
+.DS_Store
+!.env.example
+README.backup.md
+backup-original/
+*.zip
