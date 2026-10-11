@@ -27,6 +27,11 @@ Results:
 - results_reviewed.csv: A saved copy with manual reviews for all 20 tests. I kept this separate because running the script again overwrites results.csv.
 - results_week1.json: Original two-test experiment
 
+## Defense Testing
+
+I also tested a stronger system prompt against the same 20 prompts. In this run, neither of the two previously successful obfuscation attacks produced the prohibited phrase, and both baseline tasks still worked.
+
+I documented the comparison, results, and limitations in [DEFENSE_RESULTS.md](DEFENSE_RESULTS.md).
 ## Setup
 
 You'll need Python 3.10+ and an OpenAI API key.
@@ -71,6 +76,7 @@ Running the tests uses the OpenAI API and may incur charges.
 - Repeat experiments to check how consistent the responses are.
 - Compare results across different models, including Claude and Gemini.
 - Explore more realistic indirect prompt injection scenarios using untrusted documents.
+
 
 
 
