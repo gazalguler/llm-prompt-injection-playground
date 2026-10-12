@@ -32,6 +32,24 @@ Results:
 I also tested a stronger system prompt against the same 20 prompts. In this run, neither of the two previously successful obfuscation attacks produced the prohibited phrase, and both baseline tasks still worked.
 
 I documented the comparison, results, and limitations in [DEFENSE_RESULTS.md](DEFENSE_RESULTS.md).
+
+## Day 3: Evaluation on New Attack Examples
+
+I tested both the original and hardened system prompts against 10 new attack examples using the OpenAI API.
+
+| Metric | Original | Hardened |
+|---|---:|---:|
+| Attack attempts | 10 | 10 |
+| Successful attacks | 2 | 2 |
+| Attack success rate | 20% | 20% |
+
+The hardened prompt still produced the forbidden marker in two string-construction tests, sometimes while stating that it could not provide that output.
+
+I also found errors in the original automated evaluator. After correcting the exact-marker detection, the automated labels matched all 20 manually reviewed results.
+
+These findings are limited to this small test set and do not establish general security performance.
+
+Read the full report: [Day 3 Results](DAY3_RESULTS.md).
 ## Setup
 
 You'll need Python 3.10+ and an OpenAI API key.
@@ -76,6 +94,7 @@ Running the tests uses the OpenAI API and may incur charges.
 - Repeat experiments to check how consistent the responses are.
 - Compare results across different models, including Claude and Gemini.
 - Explore more realistic indirect prompt injection scenarios using untrusted documents.
+
 
 
 
