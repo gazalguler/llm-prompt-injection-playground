@@ -50,6 +50,25 @@ I also found errors in the original automated evaluator. After correcting the ex
 These findings are limited to this small test set and do not establish general security performance.
 
 Read the full report: [Day 3 Results](DAY3_RESULTS.md).
+## Day 4: Output Validation
+
+I added a Python output validator to test whether application-level filtering can prevent forbidden content from reaching the user.
+
+Using 20 previously recorded API responses from Day 3:
+
+| Metric | Original + Validator | Hardened + Validator |
+|---|---:|---:|
+| Raw violations | 2/10 | 2/10 |
+| Blocked responses | 2/10 | 2/10 |
+| Delivered violations | 0/10 | 0/10 |
+
+The validator also passed 10 local unit tests.
+
+The model still generated the forbidden marker, but the validator blocked those recorded responses before delivery.
+
+This is an exact-match demonstration, not a general prompt injection defense.
+
+Full report: [Day 4 Results](DAY4_RESULTS.md).
 ## Setup
 
 You'll need Python 3.10+ and an OpenAI API key.
@@ -94,9 +113,3 @@ Running the tests uses the OpenAI API and may incur charges.
 - Repeat experiments to check how consistent the responses are.
 - Compare results across different models, including Claude and Gemini.
 - Explore more realistic indirect prompt injection scenarios using untrusted documents.
-
-
-
-
-
-
