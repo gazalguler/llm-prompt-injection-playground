@@ -69,6 +69,26 @@ The model still generated the forbidden marker, but the validator blocked those 
 This is an exact-match demonstration, not a general prompt injection defense.
 
 Full report: [Day 4 Results](DAY4_RESULTS.md).
+## Day 5: Validator Bypass Testing
+
+I tested the original output validator against eight local examples. Four failed the updated detection requirements, including lowercase text, mixed case, a fullwidth underscore, and a zero-width character.
+
+These were local string-matching tests, not new LLM API attacks.
+
+Full results: [Day 5 Results](DAY5_RESULTS.md).
+
+## Day 6: Improved Output Validator
+
+I built a second validator using Unicode normalization and case-insensitive matching.
+
+- Original validator: 4/8 tests passed
+- Improved validator: 8/8 tests passed
+- Additional tests: 14/14 passed
+- Recorded API responses: both validators blocked 4/20
+
+The improved version detected more text variants in local tests, although both versions made the same decisions on the 20 recorded responses.
+
+Full results: [Day 6 Results](DAY6_RESULTS.md).
 ## Setup
 
 You'll need Python 3.10+ and an OpenAI API key.
