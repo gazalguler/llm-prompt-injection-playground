@@ -27,12 +27,19 @@ I ran the eight Day 5 scenarios against both validators.
 | Passed | 4 | 8 |
 | Failed | 4 | 0 |
 
-I also tested the improved validator with 14 additional cases:
+I then ran the same 14 additional cases against both validators:
 
 - 6 cases expected to be blocked
 - 8 cases expected to be allowed
 
-All 14 produced the expected decisions.
+| Result | Original | Improved |
+|---|---:|---:|
+| Passed | 9 | 14 |
+| Failed | 5 | 0 |
+
+Across all 22 local scenarios, the original validator passed 13 and the improved validator passed 22.
+
+These results measure behavior on selected local tests, not real-world security effectiveness.
 
 ## Recorded API Response Comparison
 

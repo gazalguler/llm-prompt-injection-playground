@@ -81,9 +81,9 @@ Full results: [Day 5 Results](DAY5_RESULTS.md).
 
 I built a second validator using Unicode normalization and case-insensitive matching.
 
-- Original validator: 4/8 tests passed
-- Improved validator: 8/8 tests passed
-- Additional tests: 14/14 passed
+- Initial 8 tests: original 4/8, improved 8/8
+- Additional 14 tests: original 9/14, improved 14/14
+- Total local scenarios: original 13/22, improved 22/22
 - Recorded API responses: both validators blocked 4/20
 
 The improved version detected more text variants in local tests, although both versions made the same decisions on the 20 recorded responses.
