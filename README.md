@@ -1,4 +1,4 @@
-# LLM Prompt Injection & Jailbreak Playground
+﻿# LLM Prompt Injection & Jailbreak Playground
 
 I started this project to learn more about prompt injection and jailbreak attacks, and to see how LLMs respond when someone tries to make them ignore their instructions.
 
@@ -89,6 +89,29 @@ I built a second validator using Unicode normalization and case-insensitive matc
 The improved version detected more text variants in local tests, although both versions made the same decisions on the 20 recorded responses.
 
 Full results: [Day 6 Results](DAY6_RESULTS.md).
+## Day 7: Automated Testing
+
+I reorganized the validator tests into a shared test suite and removed duplicate cases.
+
+Both validators now run against the same 17 unique test scenarios:
+
+| Validator | Passed | Failed |
+|---|---:|---:|
+| Original | 11 | 6 |
+| Improved | 17 | 0 |
+
+I also added a GitHub Actions workflow to run the improved validator tests on pushes and pull requests.
+
+The original validator is kept as a baseline for comparison. Its known limitations do not cause the CI workflow to fail.
+
+Run the tests locally:
+
+```bash
+python -m unittest -v tests.test_validators
+
+```
+
+These are local tests of a specific output-filtering rule, not a measure of general prompt injection resistance.
 ## Setup
 
 You'll need Python 3.10+ and an OpenAI API key.
