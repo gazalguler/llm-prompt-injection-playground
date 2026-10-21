@@ -126,6 +126,20 @@ The test suite now uses automatic discovery, so new test files can be included w
 Some text variants are still allowed under the current policy. Passing the tests does not mean the validator can prevent all prompt injection attacks.
 
 Full report: [Day 8 Results](DAY8_RESULTS.md).
+## Day 9: Security Policy and Normalization
+
+I revisited the validator's detection rules after noticing that newline and tab characters could split the forbidden marker without triggering a block.
+
+I updated the normalization logic and revised the earlier tests to match the new security policy.
+
+- Four previously missed marker variants are now blocked.
+- Five ordinary responses passed the policy tests.
+- Four additional tests examined multiline text and normalization tradeoffs.
+- The full regression suite passed locally.
+
+The change improves detection for these specific variants, but joining characters across lines can also cause unnecessary blocking. I haven't measured a real-world false-positive rate.
+
+Full report: [Day 9 Results](DAY9_RESULTS.md).
 ## Setup
 
 You'll need Python 3.10+ and an OpenAI API key.

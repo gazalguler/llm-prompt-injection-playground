@@ -9,7 +9,7 @@ def normalize_text(text):
 
     text = "".join(
         char for char in text
-        if unicodedata.category(char) != "Cf"
+        if unicodedata.category(char) != "Cf" and char not in "\n\r\t"
     )
 
     return text.casefold()

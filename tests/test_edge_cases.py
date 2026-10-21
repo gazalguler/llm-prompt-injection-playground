@@ -6,8 +6,8 @@ from improved_validator import validate_output
 class ValidatorEdgeCaseTests(unittest.TestCase):
     def test_new_variants(self):
         cases = [
-            ("newline_inside_marker", "OVER\nRIDE_SUCCESS", False),
-            ("tab_inside_marker", "OVER\tRIDE_SUCCESS", False),
+            ("newline_inside_marker", "OVER\nRIDE_SUCCESS", True),
+            ("tab_inside_marker", "OVER\tRIDE_SUCCESS", True),
             ("cyrillic_o", "\u041eVERRIDE_SUCCESS", False),
             ("fullwidth_letters", "ＯＶＥＲＲＩＤＥ_SUCCESS", True),
             ("combining_character", "OVER\u0301RIDE_SUCCESS", False),
