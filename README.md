@@ -140,6 +140,26 @@ I updated the normalization logic and revised the earlier tests to match the new
 The change improves detection for these specific variants, but joining characters across lines can also cause unnecessary blocking. I haven't measured a real-world false-positive rate.
 
 Full report: [Day 9 Results](DAY9_RESULTS.md).
+## Day 10: Indirect Prompt Injection and Trust Boundaries
+
+I tested how a language model handles instructions embedded in documents it was asked to summarize.
+
+Eight synthetic documents were evaluated using two system prompts: a basic summarization prompt and one that explicitly treats document content as untrusted data.
+
+| Outcome | Baseline | Trust-boundary |
+|---|---:|---:|
+| Successful attacks | 4/8 | 0/8 |
+| Partial contamination | 3/8 | 1/8 |
+| Resisted attacks | 1/8 | 7/8 |
+| Legitimate tasks completed | 2/8 | 7/8 |
+
+The trust-boundary instruction performed better on this small test set, although one response still incorporated part of a fake system message.
+
+I reviewed attack success and task completion separately rather than relying only on whether a target phrase appeared.
+
+These were synthetic documents embedded in user messages, not retrieved documents from a live application.
+
+Full report: [Day 10 Results](DAY10_RESULTS.md).
 ## Setup
 
 You'll need Python 3.10+ and an OpenAI API key.
