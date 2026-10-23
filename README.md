@@ -223,3 +223,31 @@ The baseline assistant followed two injected instructions: a forged retrieval au
 These results come from a small synthetic evaluation, not a live RAG pipeline.
 
 Full report: [Day 11 Results](DAY11_RESULTS.md).
+
+
+## Day 12: Automated Security Regression Tests
+
+Run the offline suite with Python 3.10+; no API key or installed packages are required:
+
+```bash
+python -S -m unittest discover -s tests -t . -p 'test_*.py' -v
+```
+
+The Day 12 checks cover retrieval, matched tool calls, untrusted content isolation,
+attack dataset integrity, saved CSV/JSON consistency, and manual review counts.
+CI runs only the offline `tests/` directory, with site packages disabled.
+
+Live experiments remain separate, explicitly invoked commands:
+
+```bash
+python day11_evaluate.py
+python day11_attack_evaluate.py
+```
+
+These live commands require dependencies and a local API key, incur API charges,
+and overwrite the raw Day 11 result files. Run them in a separate checkout when
+preserving the historical fixtures. Model behavior is not deterministic even at
+temperature zero. Offline checks validate structure and historical records;
+they do not prove model resistance to prompt injection.
+
+Details: [Day 12 Results](DAY12_RESULTS.md).

@@ -36,6 +36,13 @@ def build_messages(document_id, system_prompt):
     ]
 
 
+def build_attack_messages(document, system_prompt):
+    """Simulate an attack by replacing only the untrusted tool result."""
+    messages = build_messages("incident", system_prompt)
+    messages[-1]["content"] = json.dumps(document, ensure_ascii=False)
+    return messages
+
+
 if __name__ == "__main__":
     messages = build_messages(
         "incident",

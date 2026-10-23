@@ -17,5 +17,5 @@ jobs:
         with:
           python-version: "3.13"
 
-      - name: Run validator tests
-        run: python -m unittest discover -s tests -t . -p 'test_*.py' -v
+      - name: Run offline security and validator tests
+        run: python -S -m unittest discover -s tests -t . -p 'test_*.py' -v

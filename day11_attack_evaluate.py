@@ -4,14 +4,11 @@ from datetime import datetime, timezone
 
 from day11_attack_cases import ATTACK_CASES, ATTACK_MARKER
 from day11_evaluate import MODEL, SYSTEM_PROMPTS, client
-from day11_messages import build_messages
+from day11_messages import build_attack_messages
 
 
 def run_attack(case_id, document, condition, system_prompt):
-    messages = build_messages("incident", system_prompt)
-
-    # Replace only the retrieved tool response with the attack document.
-    messages[-1]["content"] = json.dumps(document, ensure_ascii=False)
+    messages = build_attack_messages(document, system_prompt)
 
     completion = client.chat.completions.create(
         model=MODEL,
