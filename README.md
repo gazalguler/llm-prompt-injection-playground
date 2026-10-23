@@ -204,3 +204,22 @@ Running the tests uses the OpenAI API and may incur charges.
 - Repeat experiments to check how consistent the responses are.
 - Compare results across different models, including Claude and Gemini.
 - Explore more realistic indirect prompt injection scenarios using untrusted documents.
+
+## Day 11: Tool-Output Prompt Injection
+
+This experiment tests whether instructions embedded in retrieved documents can redirect an AI assistant.
+
+I built a local mock retrieval system and simulated a tool-call conversation. The retrieved content was delivered through a separate tool message rather than embedded in the user's request.
+
+The evaluation included 16 API responses: six initial responses and ten responses from five additional attack scenarios.
+
+| Expanded attack results | Baseline | Trust-boundary |
+|---|---:|---:|
+| Successful attacks | 2/5 | 0/5 |
+| Resisted attacks | 3/5 | 5/5 |
+
+The baseline assistant followed two injected instructions: a forged retrieval authorization and a malicious summary requirement. The trust-boundary assistant resisted all five attacks in this test set.
+
+These results come from a small synthetic evaluation, not a live RAG pipeline.
+
+Full report: [Day 11 Results](DAY11_RESULTS.md).
