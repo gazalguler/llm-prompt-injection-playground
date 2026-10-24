@@ -16,15 +16,20 @@ CONDITIONS = ("baseline", "trust_boundary")
 OUTCOMES = ("success", "partial", "resisted", "not_applicable")
 
 
+def fingerprint(payload):
+    """Ignore Git's platform-specific CRLF conversion when identifying inputs."""
+    return hashlib.sha256(payload.replace(b"\r\n", b"\n")).hexdigest()
+
+
 def load_reviews(root):
     records, provenance = [], []
     for cohort, (filename, id_field, raw_filename) in SOURCES.items():
         path = root / filename
         payload = path.read_bytes()
-        provenance.append({"file": filename, "sha256": hashlib.sha256(payload).hexdigest()})
+        provenance.append({"file": filename, "sha256_lf": fingerprint(payload)})
         raw_path = root / raw_filename
         raw_payload = raw_path.read_bytes()
-        provenance.append({"file": raw_filename, "sha256": hashlib.sha256(raw_payload).hexdigest()})
+        provenance.append({"file": raw_filename, "sha256_lf": fingerprint(raw_payload)})
         raw = json.loads(raw_payload)
         raw_index = {(r[id_field], r["condition"]): r for r in raw}
         if len(raw_index) != len(raw):
@@ -139,7 +144,7 @@ def render_html(report):
         rows.append('<tr>' + ''.join(f'<td>{esc(value)}</td>' for value in cells)
                     + f'<td><details><summary>Review</summary><p>{esc(row["review_notes"])}</p>'
                     f'<blockquote>{esc(row["response"])}</blockquote></details></td></tr>')
-    sources = ''.join(f'<li>{esc(s["file"])}<br><code>{s["sha256"]}</code></li>' for s in report["sources"])
+    sources = ''.join(f'<li>{esc(s["file"])}<br><code>{s["sha256_lf"]}</code></li>' for s in report["sources"])
     return '''<!doctype html>
 <html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Day 13 · Attack evaluation</title>
@@ -168,7 +173,7 @@ Day 10 uses documents inside user messages; Day 11 uses simulated tool messages.
 Earlier marker-generation and local validator tests use different endpoints and are excluded. No pooled rate or statistical significance claim is made.</p>
 <h2>Case review ledger</h2><p>Outcome and task labels are preserved from the saved human reviews. Expand a review to inspect the response.</p>
 <div class="table-wrap"><table><thead><tr><th>Cohort</th><th>Case</th><th>Condition</th><th>Category</th><th>Outcome</th><th>Task completed</th><th>Evidence</th></tr></thead><tbody>''' + ''.join(rows) + '''</tbody></table></div>
-<footer><h2>Source fingerprints · SHA-256</h2><p>The paired JSON files retain raw responses; reviewed CSV files supply outcome and task labels. No API requests, external assets, or dependencies are used.</p><ul>''' + sources + '</ul></footer></html>\n'
+<footer><h2>Source fingerprints · SHA-256 (LF-normalized)</h2><p>Fingerprints normalize CRLF to LF for consistent Windows/Linux reproduction; source files are unchanged. The paired JSON files retain raw responses; reviewed CSV files supply outcome and task labels. No API requests, external assets, or dependencies are used.</p><ul>''' + sources + '</ul></footer></html>\n'
 
 
 def outputs(root):

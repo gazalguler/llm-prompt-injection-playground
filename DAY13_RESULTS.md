@@ -53,8 +53,8 @@ Open [day13_dashboard.html](day13_dashboard.html) directly in a browser.
 It is a standalone HTML report with responsive cards, outcome bars and an
 expandable evidence ledger. It has no scripts, remote assets or network requests.
 [day13_metrics.json](day13_metrics.json) contains exact counts, ratios, normalized
-reviews and SHA-256 fingerprints of the six input files. Output has no generation
-timestamp, so identical source bytes produce identical report bytes. CI checks
+reviews and SHA-256 fingerprints of the six input files after CRLF-to-LF normalization. Output has no generation
+timestamp, so identical source content apart from CRLF/LF line endings produce identical report bytes. CI checks
 that the committed reports match regeneration.
 
 ## Scope and uncertainty
@@ -76,9 +76,9 @@ Raw JSON, original CSV and reviewed CSV files are preserved.
 
 ## Verification
 
-All 27 offline unittest tests passed, including eight Day 13 tests. The report
+All 28 offline unittest tests passed, including nine Day 13 tests. The report
 reproduction check and Git whitespace check passed. A secret-pattern scan of
-72 tracked/proposed files found no matches; the local .env remains ignored.
+73 tracked/proposed files found no matches; the local .env remains ignored.
 Historical CSV and Day 10/11 raw JSON files have no changes.
 
 The HTML was not visually checked: the preview browser blocked local file URLs.

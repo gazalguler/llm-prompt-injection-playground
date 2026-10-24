@@ -111,6 +111,15 @@ class MetricsTests(unittest.TestCase):
         self.assertIn("&lt;script&gt;", rendered)
         self.assertNotIn("https://", rendered)
 
+    def test_windows_and_linux_sources_produce_identical_reports(self):
+        from day13_metrics import SOURCES
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for reviewed, _, raw in SOURCES.values():
+                for name in (reviewed, raw):
+                    (root / name).write_bytes((ROOT / name).read_bytes().replace(b"\r\n", b"\n"))
+            self.assertEqual(outputs(ROOT), outputs(root))
+
 
 if __name__ == "__main__":
     unittest.main()

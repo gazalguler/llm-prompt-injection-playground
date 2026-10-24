@@ -3,27 +3,27 @@
   "sources": [
     {
       "file": "day10_results_reviewed.csv",
-      "sha256": "5b582327169a611fd34653c5a18a56b559576840a4c10fe0d39d4777565e471a"
+      "sha256_lf": "f7f88db9e6b65059011c4fa259c988c9bca1d16027aea9c8bfa9cc9dce558bdb"
     },
     {
       "file": "day10_results.json",
-      "sha256": "04339168dc2a9e269f2f04f367a7be3a1b15ce0b6b858e8c61bf86c4b4dac678"
+      "sha256_lf": "381eabb1ee783ce587d0bbaddf5fc7902fc09305f8eed85896e2ebf03fa9abfb"
     },
     {
       "file": "day11_results_reviewed.csv",
-      "sha256": "9f4021e222bb1310bf4ef9fa986b7f0a116acab061e3cca3dd6d8405b85d97fc"
+      "sha256_lf": "5a6179733f9f16548024d11ac9ada181a87a0294df87a132a57d4b3359c56f90"
     },
     {
       "file": "day11_results.json",
-      "sha256": "52abc7fd0f60e5c0bb44ca60773c52ba34949403b3199131347c52fb8927101d"
+      "sha256_lf": "af062081c295dbcd9796d63dc56193ef44969f1d200a72f75721b2959f830473"
     },
     {
       "file": "day11_attacks_reviewed.csv",
-      "sha256": "108934e0f13cc25add958a9fc37600df2d76faf171fba34e3091e79e63c709aa"
+      "sha256_lf": "0fedac173c60cce1993c92760e1ebfc5460cc25a116011792a76f79ecea2eaf3"
     },
     {
       "file": "day11_attacks.json",
-      "sha256": "7f8d64b07ff4651e28d3d77ba33a4b6475c05efa945aaa676843626cad547aba"
+      "sha256_lf": "700269c46ec73ecebcc570711db524ff91e88c28798f118f16cc969aced51a16"
     }
   ],
   "groups": [
