@@ -12,6 +12,11 @@ SOURCES = {
     "day11_initial": ("day11_results_reviewed.csv", "document_id", "day11_results.json"),
     "day11_expanded": ("day11_attacks_reviewed.csv", "test_id", "day11_attacks.json"),
 }
+COHORT_TITLES = {
+    "day10_documents": "Day 10 · Document Injection",
+    "day11_expanded": "Day 11 · Expanded Tool-Output Attacks",
+    "day11_initial": "Day 11 · Initial Tool-Output Test",
+}
 CONDITIONS = ("baseline", "trust_boundary")
 OUTCOMES = ("success", "partial", "resisted", "not_applicable")
 
@@ -134,7 +139,7 @@ def render_html(report):
             ("Task completed · controls", "control_task_completion"),
             ("Resisted + task completed", "resisted_and_completed"),
         ))
-        cards.append(f'<article><h2>{esc(group["cohort"].replace("_", " "))}</h2>'
+        cards.append(f'<article><h2>{esc(COHORT_TITLES[group["cohort"]])}</h2>'
                      f'<p class="condition">{esc(group["condition"])} · {esc(group["model"])}</p>'
                      f'<p>{n} attacks · {group["controls"]} clean controls</p>'
                      f'<div class="bar" aria-hidden="true">{bars}</div><dl>{metrics}</dl></article>')
@@ -173,7 +178,7 @@ Day 10 uses documents inside user messages; Day 11 uses simulated tool messages.
 Earlier marker-generation and local validator tests use different endpoints and are excluded. No pooled rate or statistical significance claim is made.</p>
 <h2>Case review ledger</h2><p>Outcome and task labels are preserved from the saved human reviews. Expand a review to inspect the response.</p>
 <div class="table-wrap"><table><thead><tr><th>Cohort</th><th>Case</th><th>Condition</th><th>Category</th><th>Outcome</th><th>Task completed</th><th>Evidence</th></tr></thead><tbody>''' + ''.join(rows) + '''</tbody></table></div>
-<footer><h2>Source fingerprints · SHA-256 (LF-normalized)</h2><p>Fingerprints normalize CRLF to LF for consistent Windows/Linux reproduction; source files are unchanged. The paired JSON files retain raw responses; reviewed CSV files supply outcome and task labels. No API requests, external assets, or dependencies are used.</p><ul>''' + sources + '</ul></footer></html>\n'
+<footer><details><summary>Source fingerprints · SHA-256 (LF-normalized)</summary><p>Fingerprints normalize CRLF to LF for consistent Windows/Linux reproduction; source files are unchanged. The paired JSON files retain raw responses; reviewed CSV files supply outcome and task labels. No API requests, external assets, or dependencies are used.</p><ul>''' + sources + '</ul></details></footer></html>\n'
 
 
 def outputs(root):
