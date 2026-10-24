@@ -19,3 +19,6 @@ jobs:
 
       - name: Run offline security and validator tests
         run: python -S -m unittest discover -s tests -t . -p 'test_*.py' -v
+
+      - name: Verify saved offline metrics and dashboard
+        run: python -S day13_metrics.py --check

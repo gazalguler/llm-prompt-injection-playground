@@ -251,3 +251,25 @@ temperature zero. Offline checks validate structure and historical records;
 they do not prove model resistance to prompt injection.
 
 Details: [Day 12 Results](DAY12_RESULTS.md).
+
+
+## Day 13: Attack Evaluation Metrics & Security Dashboard
+
+The [offline dashboard](day13_dashboard.html) consolidates 32 saved Day 10–11
+responses, keeping the three experimental cohorts and two prompt conditions
+separate. It shows success, partial contamination, resistance and task completion,
+with the saved review notes and responses available for inspection.
+
+Four clean controls remain `not_applicable` for attack outcomes. Earlier marker
+and validator experiments are excluded because their endpoints differ.
+These small synthetic runs do not establish general security performance.
+
+Rebuild or verify the standalone HTML and JSON reports without packages or keys:
+
+```sh
+python -S day13_metrics.py
+python -S day13_metrics.py --check
+```
+
+CI runs the offline tests and checks report reproducibility.
+Definitions, counts and limitations: [Day 13 Results](DAY13_RESULTS.md).
