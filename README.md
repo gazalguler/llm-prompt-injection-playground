@@ -273,3 +273,18 @@ python -S day13_metrics.py --check
 
 CI runs the offline tests and checks report reproducibility.
 Definitions, counts and limitations: [Day 13 Results](DAY13_RESULTS.md).
+
+## Day 14: Adversarial Test Expansion & Repeated Trials
+
+Prepare three trials of each Day 11 attack under both prompt conditions:
+
+```sh
+python -S day14_trials.py prepare day14_runs/repeat_001 --run-id repeat_001
+```
+
+This saves 30 requests without making API calls. Optional new variants remain
+in a separate cohort; response recording preserves raw JSON and blank manual
+review fields. Existing runs and trial responses are never overwritten.
+No live experiments have been performed for Day 14. Any future live execution
+requires explicit agreement on the plan and dollar budget. CI stays offline.
+See [Day 14 methodology](DAY14_RESULTS.md) for limits and review instructions.
