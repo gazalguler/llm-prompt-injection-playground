@@ -285,6 +285,21 @@ python -S day14_trials.py prepare day14_runs/repeat_001 --run-id repeat_001
 This saves 30 requests without making API calls. Optional new variants remain
 in a separate cohort; response recording preserves raw JSON and blank manual
 review fields. Existing runs and trial responses are never overwritten.
-No live experiments have been performed for Day 14. Any future live execution
+The approved Day 14 run completed on 2026-10-25. Any further live execution
 requires explicit agreement on the plan and dollar budget. CI stays offline.
 See [Day 14 methodology](DAY14_RESULTS.md) for limits and review instructions.
+
+## Day 15: Attack Variants & Generalization Testing
+
+Six new synthetic attack/control pairs form a separate exploratory cohort.
+The offline plan compares baseline and trust-boundary prompts with three trials
+per case: 72 planned requests, no API calls. Manual labels stay blank until review;
+controls, missing responses and uncertain outcomes are reported separately.
+
+```sh
+python -B -S day15_trials.py prepare day15_runs/generalization_001 --run-id generalization_001
+python -B -S day15_trials.py summarize day15_runs/generalization_001
+```
+
+See [Day 15 methodology](DAY15_RESULTS.md) for objectives, labeling rules,
+reproducibility commands and limits. No Day 15 model results are claimed.
