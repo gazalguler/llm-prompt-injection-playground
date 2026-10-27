@@ -293,8 +293,9 @@ See [Day 14 methodology](DAY14_RESULTS.md) for limits and review instructions.
 
 Six new synthetic attack/control pairs form a separate exploratory cohort.
 The offline plan compares baseline and trust-boundary prompts with three trials
-per case: 72 planned requests, no API calls. Manual labels stay blank until review;
-controls, missing responses and uncertain outcomes are reported separately.
+per case. The approved live run completed all 72 requests once on 2026-10-26,
+with usage-derived cost USD 0.00244260 against a USD 0.05 cap. Agent reviews
+keep controls and attack outcomes separate.
 
 ```sh
 python -B -S day15_trials.py prepare day15_runs/generalization_001 --run-id generalization_001
@@ -302,4 +303,5 @@ python -B -S day15_trials.py summarize day15_runs/generalization_001
 ```
 
 See [Day 15 methodology](DAY15_RESULTS.md) for objectives, labeling rules,
-reproducibility commands and limits. No Day 15 model results are claimed.
+reproducibility commands, observed results and limits. Reviews are agent-authored;
+these small synthetic cohorts do not establish general security performance.

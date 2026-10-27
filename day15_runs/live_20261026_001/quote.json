@@ -1,0 +1,15 @@
+{
+  "requests": 72,
+  "model": "gpt-4o-mini",
+  "input_token_allowance": 207750,
+  "output_token_allowance": 14400,
+  "conservative_usd": "0.03980250",
+  "input_usd_per_million": "0.15",
+  "output_usd_per_million": "0.60",
+  "pricing_date": "2026-10-26",
+  "pricing_source": "https://developers.openai.com/api/docs/models/gpt-4o-mini",
+  "input_bound": "Serialized UTF-8 message bytes plus 2048 per request",
+  "provider_side_cap": "Not verified; local reservation cap only",
+  "retries": 0,
+  "plan_sha256": "61a64e319d9b4d524006a1114e3bba9c49e0d1ea178594ad47554c0052c7d0ed"
+}

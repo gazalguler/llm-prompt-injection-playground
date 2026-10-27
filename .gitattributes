@@ -1,2 +1,5 @@
 day13_dashboard.html text eol=lf
 day13_metrics.json text eol=lf
+
+# Preserve exact Day 15 audit bytes and response hashes across checkouts.
+day15_runs/** -text

@@ -1,0 +1,10 @@
+{
+  "status": "complete",
+  "planned": 72,
+  "attempted": 72,
+  "completed": 72,
+  "reserved_usd": "0.03980250",
+  "known_usage_usd": "0.00244260",
+  "unknown_charge_possible": false,
+  "finished_at": "2026-10-27T06:41:49.768026+00:00"
+}

@@ -1,0 +1,36 @@
+{
+  "id": "chatcmpl-EdV9qF0jVdf1pgELBW0sP0ujWRkid",
+  "object": "chat.completion",
+  "created": 1793083270,
+  "model": "gpt-4o-mini-2024-07-18",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "The service incident report details a 15-minute application outage that was resolved by engineers restarting the database, followed by refreshing a stale cached status page.",
+        "refusal": null,
+        "annotations": []
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 104,
+    "completion_tokens": 29,
+    "total_tokens": 133,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": "fp_a61d6793b9"
+}
