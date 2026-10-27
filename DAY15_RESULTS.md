@@ -5,9 +5,62 @@
 Offline setup only. No Day 15 model responses, human labels or attack rates exist.
 The default plan has 72 requests: six attack/control pairs, two prompt conditions,
 three repetitions. Its output ceiling is 14,400 tokens; this is not a dollar budget.
-No execution client is provided. Paid execution needs approval of the exact saved
-plan, model, current prices, input allowance, request count and dollar ceiling.
-Day 14 authorization does not cover this cohort.
+`day15_live.py` now provides a separately gated execution client. Paid execution
+still needs approval of the exact saved plan, model, current prices, input allowance,
+request count and dollar ceiling. Day 14 authorization does not cover this cohort.
+
+## Live preflight (2026-10-26)
+
+The frozen run `live_20261026_001` covers 36 attacks and 36 controls: six pairs,
+two conditions and three repeats. Its plan fingerprint is
+`61a64e319d9b4d524006a1114e3bba9c49e0d1ea178594ad47554c0052c7d0ed`.
+Official GPT-4o mini standard prices checked on 2026-10-26 are USD 0.15 per
+million input tokens and USD 0.60 per million output tokens:
+https://developers.openai.com/api/docs/models/gpt-4o-mini . The page marks this
+model deprecated; availability for this account is unverified. No substitute
+model or paid availability probe is authorized.
+
+The conservative allowance is 207,750 input tokens and 14,400 output tokens,
+costing USD 0.03980250 at those prices. Input allowance uses serialized UTF-8
+message bytes plus 2,048 tokens per request for framing. This is a conservative
+engineering allowance, not a provider billing guarantee. A proposed USD 0.05
+maximum covers it; user approval is still pending. Taxes and unrelated account
+usage are outside this local experiment cap. Provider-side spend limits have
+not been verified.
+
+Offline preparation and inspection:
+
+```sh
+python -B -S day15_live.py prepare day15_runs/live_20261026_001 --run-id live_20261026_001
+python -B -S day15_live.py preflight day15_runs/live_20261026_001
+```
+
+After explicit approval of 72 requests and USD 0.05 maximum, execute exactly:
+
+```sh
+python -B -S day15_live.py execute day15_runs/live_20261026_001 --approved-usd 0.05 --plan-sha256 61a64e319d9b4d524006a1114e3bba9c49e0d1ea178594ad47554c0052c7d0ed --approval-note "User approved 72 Day 15 requests once, maximum USD 0.05 in chat"
+```
+
+This command is documentation, not evidence of approval. Preparation rejects
+existing directories. Execution validates the entire default plan and frozen
+quote, requires pristine output storage, and creates an exclusive cohort lock.
+Each attempt reserves its full cost in a flushed, fsynced journal before sending.
+Timeouts, HTTP errors, unknown usage and model mismatches stop the run without
+retry. The lock remains after failures; a restart cannot silently duplicate paid
+requests. Raw HTTP bytes, hashes, provider request IDs and a completion summary
+are retained. A timeout may incur an unknown charge; it is never labeled resisted.
+Hard termination may leave only the durable journal, which remains the audit source.
+
+The existing local credential helper reads `OPENAI_API_KEY` from the environment
+or repository `.env` without printing its value. The key is not a command argument,
+stored experiment field or committed file. Transport uses only the fixed HTTPS
+OpenAI endpoint, disables redirects and proxy inheritance, and makes no retries.
+No live key validation request has been made.
+
+All 42 offline tests pass, including six new transport-fixture tests for full
+coverage, budget/hash rejection, no second run, timeouts, HTTP failures, unknown
+usage and preservation of existing output. Day 13 reports pass `--check`.
+Fixtures are synthetic; there are still zero Day 15 live responses or reviews.
 
 ## Dataset and comparison
 
