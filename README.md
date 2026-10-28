@@ -1,5 +1,15 @@
 # LLM Prompt Injection & Jailbreak Playground
 
+## Day 16: Failure Analysis & Defense Improvement
+
+The three Day 15 trust-boundary failures all followed a document instruction to
+rewrite the incident facts. A narrow output gate now withholds those responses
+in offline replay, while preserving 15/18 completed attack summaries and 18/18
+controls. This contains known failures; it does not generate replacement summaries
+or establish general security. Earlier attack responses remain separate regression
+fixtures. See [DAY16_RESULTS.md](DAY16_RESULTS.md) for the raw evidence, comparison,
+quality costs and limitations. No new API requests were made.
+
 I started this project to learn more about prompt injection and jailbreak attacks, and to see how LLMs respond when someone tries to make them ignore their instructions.
 
 I began with a simple Python script using the OpenAI API. The first version had just two tests, but I've since expanded it to 20 prompts across five categories. I'm using the results to understand which approaches work, which don't, and why.
