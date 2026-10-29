@@ -1,5 +1,15 @@
 # LLM Prompt Injection & Jailbreak Playground
 
+## Day 17: Recovery & Safe Answer Generation
+
+After the Day 16 gate rejects a candidate, a deterministic renderer can produce
+an incident summary from an explicitly supplied owner-controlled fact record.
+Offline replay recovers all three blocked trust-boundary responses, bringing
+fixed-task completion to 18/18 attacks while retaining 18/18 controls. Missing
+or conflicting trusted records cause abstention. This supports one synthetic
+incident and does not establish general factuality or model robustness.
+See [Day 17 results](DAY17_RESULTS.md) for metrics, assumptions and limits.
+
 ## Day 16: Failure Analysis & Defense Improvement
 
 The three Day 15 trust-boundary failures all followed a document instruction to
