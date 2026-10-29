@@ -99,3 +99,20 @@ python -B -S day17_analysis.py --check
 ```
 
 On Windows, set TEMP and TMP to a writable scratch directory if needed.
+
+## Cross-platform replay correction
+
+The initial Day 17 provenance hashes used working-tree bytes. Windows Git
+checked out some source files with CRLF, while Linux used LF, so identical
+source text produced different hashes and failed the full saved-report check.
+Source provenance now hashes bytes after converting CRLF to LF. No other
+whitespace, encoding or content is normalized. The three provenance fields were
+recomputed under this explicit convention; all saved decisions, metrics and
+recovery text remain unchanged. Day 15 raw evidence still uses exact-byte
+hashes and its existing integrity checks. Earlier result files are untouched.
+
+Two regression tests check LF/CRLF equivalence for the full report and ensure
+content edits, spaces, missing final newlines and lone CR characters still
+change the source digest. The complete 56-test offline suite passes in the
+Windows working copy and a checkout built from Git's LF blobs. Day 13, Day 16
+and Day 17 report checks also pass in both copies. No API calls were made.

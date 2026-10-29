@@ -6,9 +6,9 @@
     "recovery": "database_restart"
   },
   "provenance": {
-    "day15_cases.py": "79a26fda059df05533103ebb2834cf45f68c2594c70fe172815ffabad960e179",
+    "day15_cases.py": "8d14a054bcd1ce6d2e6b7d5c08ec071bc25256ff0a2adae6a0587cdace5bc18b",
     "day16_defense.py": "20de8a36daca2c8bf0c215f73b69d09c8bbbd8fe438a6fc631ce9ed05f726ffe",
-    "day16_replay.json": "76682e63fc15a37e7ed579ad068da3c92c86355dd265a0d1f83b04753c40d54e"
+    "day16_replay.json": "df340f4822f0a4d3a45b8879fe3ee35fa082399c52ee6821d0431e42c8a88809"
   },
   "totals": [
     {

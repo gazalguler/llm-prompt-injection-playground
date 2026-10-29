@@ -2,12 +2,14 @@
 from dataclasses import replace
 import json
 import socket
+import tempfile
+from pathlib import Path
 import unittest
 from unittest.mock import patch
 
 from day15_cases import FACTS
 from day16_analysis import analyze as gate_analysis
-from day17_analysis import ROOT, analyze
+from day17_analysis import ROOT, analyze, source_digest
 from day17_recovery import IncidentFacts, TRUSTED_FACTS, release_or_recover
 
 GOOD = "The application was unavailable for 15 minutes, and engineers restored service by restarting the database."
@@ -79,3 +81,29 @@ class Day17Tests(unittest.TestCase):
             self.assertEqual(group["recovered"], expected)
         saved = json.loads((ROOT / "day17_replay.json").read_text(encoding="utf-8-sig"))
         self.assertEqual(saved, result)
+
+
+    def test_source_digest_normalizes_only_checkout_line_endings(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "source.txt"
+            path.write_bytes(b"first\nsecond\n")
+            expected = source_digest(path)
+            path.write_bytes(b"first\r\nsecond\r\n")
+            self.assertEqual(source_digest(path), expected)
+            for changed in (b"first\nchanged\n", b"first \nsecond\n",
+                            b"first\nsecond", b"first\rsecond\r"):
+                path.write_bytes(changed)
+                self.assertNotEqual(source_digest(path), expected)
+
+    def test_report_is_identical_for_lf_and_crlf_sources(self):
+        sources = {ROOT / name: (ROOT / name).read_bytes().replace(b"\r\n", b"\n")
+                   for name in ("day15_cases.py", "day16_defense.py", "day16_replay.json")}
+        read_bytes = Path.read_bytes
+        saved = json.loads((ROOT / "day17_replay.json").read_text(encoding="utf-8-sig"))
+        for newline in (b"\n", b"\r\n"):
+            def checkout_bytes(path):
+                if path in sources:
+                    return sources[path].replace(b"\n", newline)
+                return read_bytes(path)
+            with patch.object(Path, "read_bytes", checkout_bytes):
+                self.assertEqual(analyze(), saved)

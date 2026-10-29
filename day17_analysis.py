@@ -9,6 +9,14 @@ from day16_analysis import ROOT, analyze as analyze_gate
 from day17_recovery import TRUSTED_FACTS, release_or_recover
 
 
+def source_digest(path):
+    """Hash source text with LF line endings, independent of Git checkout style.
+
+    Raw Day 15 evidence keeps its separate, exact-byte integrity checks.
+    """
+    return hashlib.sha256(path.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
+
+
 def analyze():
     source = analyze_gate()  # Validates requests, raw bodies and review links.
     candidates = {}
@@ -43,7 +51,7 @@ def analyze():
     paths = ["day15_cases.py", "day16_defense.py", "day16_replay.json"]
     return dict(method="offline deterministic recovery; historical labels for unchanged releases",
                 trusted_facts=asdict(TRUSTED_FACTS),
-                provenance={p: hashlib.sha256((ROOT / p).read_bytes()).hexdigest() for p in paths},
+                provenance={p: source_digest(ROOT / p) for p in paths},
                 totals=totals, decisions=rows)
 
 
