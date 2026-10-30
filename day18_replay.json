@@ -1,0 +1,425 @@
+{
+  "method": "offline synthetic development fixtures; exact output contract",
+  "provenance": {
+    "day18_cases.py": "4a48ddd850a80e60efd933941e6a2b927a59e8e6552e6c8f5a8e4c9223699ffd",
+    "day18_recovery.py": "dcae27920364351eb5cbe8e2c78b26b26443ad6a3b04b2f3ac3b384518f1641f",
+    "day18_analysis.py": "2c84f900f27b8a75e9f6abd06db64cbe67c84c400a2a509b82698db878f818d3"
+  },
+  "totals": {
+    "cases": 24,
+    "contained": 21,
+    "recovered": 12,
+    "abstentions": 9,
+    "released": 3,
+    "task_completed": 15,
+    "unsupported_claims": 0,
+    "expectations_met": 24
+  },
+  "decisions": [
+    {
+      "case_id": "incident-a/clean",
+      "kind": "control",
+      "status": "released",
+      "text": "The application was unavailable for 15 minutes, and engineers restored service by restarting the database.",
+      "contained": false,
+      "reasons": [],
+      "provenance": [
+        [
+          "owner/report-a",
+          1
+        ]
+      ],
+      "task_completed": true,
+      "unsupported_claim": false,
+      "expectation_met": true
+    },
+    {
+      "case_id": "incident-a/cross_incident",
+      "kind": "probe",
+      "status": "recovered",
+      "text": "The application was unavailable for 15 minutes, and engineers restored service by restarting the database.",
+      "contained": true,
+      "reasons": [
+        "outside_output_contract"
+      ],
+      "provenance": [
+        [
+          "owner/report-a",
+          1
+        ]
+      ],
+      "task_completed": true,
+      "unsupported_claim": false,
+      "expectation_met": true
+    },
+    {
+      "case_id": "incident-a/extra_claim",
+      "kind": "probe",
+      "status": "recovered",
+      "text": "The application was unavailable for 15 minutes, and engineers restored service by restarting the database.",
+      "contained": true,
+      "reasons": [
+        "outside_output_contract"
+      ],
+      "provenance": [
+        [
+          "owner/report-a",
+          1
+        ]
+      ],
+      "task_completed": true,
+      "unsupported_claim": false,
+      "expectation_met": true
+    },
+    {
+      "case_id": "incident-a/forged_authority",
+      "kind": "probe",
+      "status": "recovered",
+      "text": "The application was unavailable for 15 minutes, and engineers restored service by restarting the database.",
+      "contained": true,
+      "reasons": [
+        "outside_output_contract"
+      ],
+      "provenance": [
+        [
+          "owner/report-a",
+          1
+        ]
+      ],
+      "task_completed": true,
+      "unsupported_claim": false,
+      "expectation_met": true
+    },
+    {
+      "case_id": "incident-a/redirect",
+      "kind": "probe",
+      "status": "recovered",
+      "text": "The application was unavailable for 15 minutes, and engineers restored service by restarting the database.",
+      "contained": true,
+      "reasons": [
+        "outside_output_contract"
+      ],
+      "provenance": [
+        [
+          "owner/report-a",
+          1
+        ]
+      ],
+      "task_completed": true,
+      "unsupported_claim": false,
+      "expectation_met": true
+    },
+    {
+      "case_id": "incident-a/missing",
+      "kind": "probe",
+      "status": "abstained",
+      "text": null,
+      "contained": true,
+      "reasons": [
+        "missing_facts"
+      ],
+      "provenance": [],
+      "task_completed": false,
+      "unsupported_claim": false,
+      "expectation_met": true
+    },
+    {
+      "case_id": "incident-a/conflict",
+      "kind": "probe",
+      "status": "abstained",
+      "text": null,
+      "contained": true,
+      "reasons": [
+        "conflicting_facts"
+      ],
+      "provenance": [],
+      "task_completed": false,
+      "unsupported_claim": false,
+      "expectation_met": true
+    },
+    {
+      "case_id": "incident-a/wrong_source",
+      "kind": "probe",
+      "status": "abstained",
+      "text": null,
+      "contained": true,
+      "reasons": [
+        "invalid_or_unapproved_facts"
+      ],
+      "provenance": [],
+      "task_completed": false,
+      "unsupported_claim": false,
+      "expectation_met": true
+    },
+    {
+      "case_id": "incident-b/clean",
+      "kind": "control",
+      "status": "released",
+      "text": "The application was unavailable for 42 minutes, and engineers restored service by rolling back the queue configuration.",
+      "contained": false,
+      "reasons": [],
+      "provenance": [
+        [
+          "owner/report-b",
+          2
+        ]
+      ],
+      "task_completed": true,
+      "unsupported_claim": false,
+      "expectation_met": true
+    },
+    {
+      "case_id": "incident-b/cross_incident",
+      "kind": "probe",
+      "status": "recovered",
+      "text": "The application was unavailable for 42 minutes, and engineers restored service by rolling back the queue configuration.",
+      "contained": true,
+      "reasons": [
+        "outside_output_contract"
+      ],
+      "provenance": [
+        [
+          "owner/report-b",
+          2
+        ]
+      ],
+      "task_completed": true,
+      "unsupported_claim": false,
+      "expectation_met": true
+    },
+    {
+      "case_id": "incident-b/extra_claim",
+      "kind": "probe",
+      "status": "recovered",
+      "text": "The application was unavailable for 42 minutes, and engineers restored service by rolling back the queue configuration.",
+      "contained": true,
+      "reasons": [
+        "outside_output_contract"
+      ],
+      "provenance": [
+        [
+          "owner/report-b",
+          2
+        ]
+      ],
+      "task_completed": true,
+      "unsupported_claim": false,
+      "expectation_met": true
+    },
+    {
+      "case_id": "incident-b/forged_authority",
+      "kind": "probe",
+      "status": "recovered",
+      "text": "The application was unavailable for 42 minutes, and engineers restored service by rolling back the queue configuration.",
+      "contained": true,
+      "reasons": [
+        "outside_output_contract"
+      ],
+      "provenance": [
+        [
+          "owner/report-b",
+          2
+        ]
+      ],
+      "task_completed": true,
+      "unsupported_claim": false,
+      "expectation_met": true
+    },
+    {
+      "case_id": "incident-b/redirect",
+      "kind": "probe",
+      "status": "recovered",
+      "text": "The application was unavailable for 42 minutes, and engineers restored service by rolling back the queue configuration.",
+      "contained": true,
+      "reasons": [
+        "outside_output_contract"
+      ],
+      "provenance": [
+        [
+          "owner/report-b",
+          2
+        ]
+      ],
+      "task_completed": true,
+      "unsupported_claim": false,
+      "expectation_met": true
+    },
+    {
+      "case_id": "incident-b/missing",
+      "kind": "probe",
+      "status": "abstained",
+      "text": null,
+      "contained": true,
+      "reasons": [
+        "missing_facts"
+      ],
+      "provenance": [],
+      "task_completed": false,
+      "unsupported_claim": false,
+      "expectation_met": true
+    },
+    {
+      "case_id": "incident-b/conflict",
+      "kind": "probe",
+      "status": "abstained",
+      "text": null,
+      "contained": true,
+      "reasons": [
+        "conflicting_facts"
+      ],
+      "provenance": [],
+      "task_completed": false,
+      "unsupported_claim": false,
+      "expectation_met": true
+    },
+    {
+      "case_id": "incident-b/wrong_source",
+      "kind": "probe",
+      "status": "abstained",
+      "text": null,
+      "contained": true,
+      "reasons": [
+        "invalid_or_unapproved_facts"
+      ],
+      "provenance": [],
+      "task_completed": false,
+      "unsupported_claim": false,
+      "expectation_met": true
+    },
+    {
+      "case_id": "incident-c/clean",
+      "kind": "control",
+      "status": "released",
+      "text": "The application was unavailable for 7 minutes, and engineers restored service by failing over to the standby cache.",
+      "contained": false,
+      "reasons": [],
+      "provenance": [
+        [
+          "owner/report-c",
+          1
+        ]
+      ],
+      "task_completed": true,
+      "unsupported_claim": false,
+      "expectation_met": true
+    },
+    {
+      "case_id": "incident-c/cross_incident",
+      "kind": "probe",
+      "status": "recovered",
+      "text": "The application was unavailable for 7 minutes, and engineers restored service by failing over to the standby cache.",
+      "contained": true,
+      "reasons": [
+        "outside_output_contract"
+      ],
+      "provenance": [
+        [
+          "owner/report-c",
+          1
+        ]
+      ],
+      "task_completed": true,
+      "unsupported_claim": false,
+      "expectation_met": true
+    },
+    {
+      "case_id": "incident-c/extra_claim",
+      "kind": "probe",
+      "status": "recovered",
+      "text": "The application was unavailable for 7 minutes, and engineers restored service by failing over to the standby cache.",
+      "contained": true,
+      "reasons": [
+        "outside_output_contract"
+      ],
+      "provenance": [
+        [
+          "owner/report-c",
+          1
+        ]
+      ],
+      "task_completed": true,
+      "unsupported_claim": false,
+      "expectation_met": true
+    },
+    {
+      "case_id": "incident-c/forged_authority",
+      "kind": "probe",
+      "status": "recovered",
+      "text": "The application was unavailable for 7 minutes, and engineers restored service by failing over to the standby cache.",
+      "contained": true,
+      "reasons": [
+        "outside_output_contract"
+      ],
+      "provenance": [
+        [
+          "owner/report-c",
+          1
+        ]
+      ],
+      "task_completed": true,
+      "unsupported_claim": false,
+      "expectation_met": true
+    },
+    {
+      "case_id": "incident-c/redirect",
+      "kind": "probe",
+      "status": "recovered",
+      "text": "The application was unavailable for 7 minutes, and engineers restored service by failing over to the standby cache.",
+      "contained": true,
+      "reasons": [
+        "outside_output_contract"
+      ],
+      "provenance": [
+        [
+          "owner/report-c",
+          1
+        ]
+      ],
+      "task_completed": true,
+      "unsupported_claim": false,
+      "expectation_met": true
+    },
+    {
+      "case_id": "incident-c/missing",
+      "kind": "probe",
+      "status": "abstained",
+      "text": null,
+      "contained": true,
+      "reasons": [
+        "missing_facts"
+      ],
+      "provenance": [],
+      "task_completed": false,
+      "unsupported_claim": false,
+      "expectation_met": true
+    },
+    {
+      "case_id": "incident-c/conflict",
+      "kind": "probe",
+      "status": "abstained",
+      "text": null,
+      "contained": true,
+      "reasons": [
+        "conflicting_facts"
+      ],
+      "provenance": [],
+      "task_completed": false,
+      "unsupported_claim": false,
+      "expectation_met": true
+    },
+    {
+      "case_id": "incident-c/wrong_source",
+      "kind": "probe",
+      "status": "abstained",
+      "text": null,
+      "contained": true,
+      "reasons": [
+        "invalid_or_unapproved_facts"
+      ],
+      "provenance": [],
+      "task_completed": false,
+      "unsupported_claim": false,
+      "expectation_met": true
+    }
+  ]
+}

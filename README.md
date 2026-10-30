@@ -1,5 +1,14 @@
 # LLM Prompt Injection & Jailbreak Playground
 
+## Day 18: Generalizing Recovery Across Multiple Incidents
+
+Three synthetic incidents now use separate owner-controlled fact records and
+source revisions. The offline contract releases an exact supported summary,
+recovers other candidates, and abstains when facts are missing, conflicting,
+invalid or unapproved. All 24 development cases match expectations; none delivers
+an unsupported claim. Containment, recovery, abstention and task completion are
+counted separately. See [Day 18 results](DAY18_RESULTS.md) for scope and limits.
+
 ## Day 17: Recovery & Safe Answer Generation
 
 After the Day 16 gate rejects a candidate, a deterministic renderer can produce

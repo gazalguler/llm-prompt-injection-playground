@@ -22,3 +22,8 @@ jobs:
 
       - name: Verify saved offline metrics and dashboard
         run: python -S day13_metrics.py --check
+
+      - name: Verify recovery replays
+        run: |
+          python -S day17_analysis.py --check
+          python -S day18_analysis.py --check
