@@ -334,3 +334,7 @@ python -B -S day15_trials.py summarize day15_runs/generalization_001
 See [Day 15 methodology](DAY15_RESULTS.md) for objectives, labeling rules,
 reproducibility commands, observed results and limits. Reviews are agent-authored;
 these small synthetic cohorts do not establish general security performance.
+
+## Day 19: Recovery Robustness & Adversarial Edge Cases
+
+Offline owner-pinned source/incident/revision validation, conservative abstention, and 42 deterministic development cases. See [Day 19 results](DAY19_RESULTS.md).
