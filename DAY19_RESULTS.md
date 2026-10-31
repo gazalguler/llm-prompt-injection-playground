@@ -58,4 +58,3 @@ request is required. This Windows retry ran without the previous provider error;
 it does not establish that the provider's billing condition has changed.
 
 Validation: all 67 offline regression tests passed using the existing Windows venv. Saved Day 13, 17, 18 and 19 report checks passed. Git status showed only README and the six new Day 19 files; historical tracked data was unchanged. No commit or push was made.
-
