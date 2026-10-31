@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "run_id": "local-qwen-proposed-001",
+  "experiment_date": "2026-10-31",
+  "base_git_commit": "0edc34f",
+  "provider": "ollama_local",
+  "cohort": "day11_ollama_local_v1",
+  "model": "qwen3:4b-instruct",
+  "model_digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+  "ollama_version": "0.40.13",
+  "python_version": "3.13.18",
+  "quantization": "Q4_K_M",
+  "cloud_disabled_reported": true,
+  "dataset_sha256": "4fa573f861116a960ecdfc89162e6415ae7f33f05b19a29585bfc0cdb5835fd2",
+  "source_sha256": {
+    "ollama_evaluate.py": "02cfbc56473f3594bed7ce7d49be8756e5e4e53299861d3a79e6fa4990574659",
+    "day11_attack_cases.py": "ecbee39f682adb7a209b685550475138fe9152fc7ff00981633c9c3d1651e219",
+    "day11_messages.py": "c3b634685bd537974b5b8b39af61382c9b46fac92d8692b8ab82b6d88c6beeb8",
+    "day11_retrieval.py": "50ea155946a6d3d7162a4ce45bc16ac4a11807d040de68c696b074461466e370",
+    "day14_trials.py": "cfae08026a0ba605ca21c8c5cfcaefdd2f7c7305699553560a994c1624109da0"
+  },
+  "source_artifact_sha256": {
+    "plan.json": "b093721e0457432cea885a689e13cddeec96357bb77a04195aaa1cd8a7615b2e",
+    "reviews_reviewed.csv": "49f41155650ee5563c43361c4a41a6213dddc3df6906615ca099de4bc2fcdcac",
+    "metadata.json": "fe70def8eb612b1cd4a585533b7e5cc18998de3cece7213502d27b7bbe3fd16d",
+    "REPORT.md": "43774c4ce122467c7ec8ea8f8a7a47c60f4085dbbfe29b2d214f9b2a83f80e72",
+    "integrity_manifest.json": "ddf4a2ebd53eb213b04f6b4cafd20ddb826cc22a07cbb90f0b12f86a06226835",
+    "historical_integrity.json": "95848cf32e18506dd907611f576b48425057a39f8413e049ac09c06fe0961b5e",
+    "complete.json": "0a19ed6f7720d06095bc444a79f11c973fe8038335f5e989082901e2fffbeb55"
+  },
+  "audit": {
+    "source_copy_files_equal": 49,
+    "source_manifest_entries_verified": 48,
+    "historical_files_unchanged": 47,
+    "current_plan_matches_saved_plan": true,
+    "current_sources_match_snapshots": true
+  },
+  "transformations": [
+    "Exact synthetic request objects retained; request hashes use runner fingerprint, not original HTTP byte serialization.",
+    "Assistant message and completion fields retained; created_at and performance/token/cache measurements omitted from raw responses.",
+    "Reviewed CSV projected to case identifiers, classifications, task completion, evaluator and rationale; precise review timestamp and duplicated text/hashes omitted.",
+    "Host platform, model installation timestamp, full model inventory, local paths and endpoint omitted from metadata.",
+    "Original files preserved privately; SHA-256 is linkage and integrity evidence, not independent proof of execution."
+  ]
+}

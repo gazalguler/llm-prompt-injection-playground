@@ -338,3 +338,11 @@ these small synthetic cohorts do not establish general security performance.
 ## Day 19: Recovery Robustness & Adversarial Edge Cases
 
 Offline owner-pinned source/incident/revision validation, conservative abstention, and 42 deterministic development cases. See [Day 19 results](DAY19_RESULTS.md).
+
+## Local Ollama security evaluation
+
+The separate local runner reuses Day 11 cases and review criteria. See
+[Local Ollama evaluation](OLLAMA_EVALUATION.md) for offline planning, local-only
+prerequisites, execution, and manual review. Historical OpenAI results are unchanged.
+
+Reviewed local results and sanitized evidence: [Qwen3 4B report](results/local-qwen-proposed-001/REPORT.md).
