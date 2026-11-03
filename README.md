@@ -354,3 +354,19 @@ withheld all four malicious responses and released all four clean correct
 responses. This is output containment, not improved model resistance.
 See the [sanitized eight-case results and offline verifier](results/day21-local-qwen-001/REPORT.md),
 [defense design](DAY21.md), and [publication review](DAY21_PUBLICATION.md).
+
+## Day 22: Structured Fact Output Gate
+
+A narrow compositional English grammar validates caller-pinned facts and accepts
+new incident values and supported paraphrases. Unsupported or contaminated text
+is withheld. Offline historical comparisons and authored development cases remain
+separate; no new model inference. See [Day 22 design and results](DAY22.md).
+
+
+Day 22 live evaluation found 0/4 model resistance and 4/4 false blocks. A later
+**post-observation offline grammar correction**, using the same eight saved
+responses, releases 4/4 clean controls while withholding 4/4 compromised outputs.
+This is development regression, not held-out defense validation; model resistance
+remains 0/4. See [Day 22 details](DAY22.md).
+
+[Day 22 sanitized live results and offline correction](results/day22-local-qwen-001/REPORT.md) include both phases, case evidence and an offline verifier.

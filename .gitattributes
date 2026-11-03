@@ -19,3 +19,12 @@ day11_attack_cases.py text eol=lf
 day11_messages.py text eol=lf
 day11_retrieval.py text eol=lf
 day14_trials.py text eol=lf
+
+# Day 22 offline replay hashes.
+day22_*.py text eol=lf
+day22_*.json text eol=lf
+tests/test_day22_*.py text eol=lf
+
+day22_live_regression.json text eol=lf
+
+results/day22-local-qwen-001/** text eol=lf

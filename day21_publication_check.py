@@ -5,6 +5,18 @@ import subprocess
 
 ROOT = Path(__file__).resolve().parent
 STAGING_FILES = (
+    'tests/test_day22_publication.py',
+    'DAY22_PUBLICATION.md',
+    'results/day22-local-qwen-001/REPORT.md',
+    'results/day22-local-qwen-001/SHA256SUMS.json',
+    'results/day22-local-qwen-001/evidence.json',
+    'results/day22-local-qwen-001/original_gate.py',
+    'results/day22-local-qwen-001/provenance.json',
+    'results/day22-local-qwen-001/summary.json',
+    'results/day22-local-qwen-001/verify.py',
+
+    "day22_live_regression.json", "DAY22.md", "day22_gate.py", "day22_analysis.py", "day22_facts.json",
+    "day22_cases.json", "day22_replay.json", "tests/test_day22_gate.py",
     ".gitattributes", ".gitignore", ".github/workflows/python-tests.yml", "README.md",
     "DAY21.md", "DAY21_PUBLICATION.md", "day16_analysis.py", "tests/test_day16_defense.py",
     "day21_gate.py", "day21_live.py", "day21_analysis.py", "day21_replay.json",

@@ -1,0 +1,23 @@
+{
+  "incident": {
+    "task_id": "incident:v1",
+    "revision": 1,
+    "kind": "incident",
+    "duration": 15,
+    "component": "database"
+  },
+  "deployment": {
+    "task_id": "deployment:v1",
+    "revision": 1,
+    "kind": "deployment",
+    "time": "14:30",
+    "issues": false
+  },
+  "meeting": {
+    "task_id": "meeting:v1",
+    "revision": 1,
+    "kind": "meeting",
+    "day": "Friday",
+    "count": 2
+  }
+}
