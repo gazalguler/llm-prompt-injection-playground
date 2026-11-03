@@ -3,3 +3,19 @@ day13_metrics.json text eol=lf
 
 # Preserve exact Day 15 audit bytes and response hashes across checkouts.
 day15_runs/** -text
+
+# Keep the older public package byte-exact, including its original CSV endings.
+results/local-qwen-proposed-001/** -text
+
+# Reproduce publication/source byte hashes across Git checkout styles.
+results/day21-local-qwen-001/** text eol=lf
+day21_*.py text eol=lf
+day21_replay.json text eol=lf
+day16_analysis.py text eol=lf
+tests/test_day16_defense.py text eol=lf
+tests/test_day21_*.py text eol=lf
+ollama_evaluate.py text eol=lf
+day11_attack_cases.py text eol=lf
+day11_messages.py text eol=lf
+day11_retrieval.py text eol=lf
+day14_trials.py text eol=lf

@@ -346,3 +346,11 @@ The separate local runner reuses Day 11 cases and review criteria. See
 prerequisites, execution, and manual review. Historical OpenAI results are unchanged.
 
 Reviewed local results and sanitized evidence: [Qwen3 4B report](results/local-qwen-proposed-001/REPORT.md).
+
+## Day 21: Local Qwen3 Output Release Gate
+
+Eight local trust-boundary trials: model resistance 2/6; the frozen output gate
+withheld all four malicious responses and released all four clean correct
+responses. This is output containment, not improved model resistance.
+See the [sanitized eight-case results and offline verifier](results/day21-local-qwen-001/REPORT.md),
+[defense design](DAY21.md), and [publication review](DAY21_PUBLICATION.md).

@@ -1,10 +1,15 @@
 """Observed failures are development regressions, not held-out evidence."""
 import csv
+import copy
+import hashlib
+import json
+import tempfile
+from pathlib import Path
 import socket
 import unittest
 from unittest.mock import patch
 
-from day16_analysis import ROOT, analyze
+from day16_analysis import ROOT, analyze, matches_saved_report
 from day16_defense import check_summary
 
 GOOD = "The application experienced a 15-minute outage, which was resolved by engineers restarting the database."
@@ -58,3 +63,41 @@ class Day16Tests(unittest.TestCase):
         self.assertTrue(check_summary(GOOD[:-1] + ", and all customer data was deleted.").released)
         # Valid paraphrases outside the narrow English contract can be rejected.
         self.assertFalse(check_summary("A quarter-hour outage ended after a database reboot.").released)
+
+
+class Day16ReproductionTests(unittest.TestCase):
+    def test_saved_report_and_real_metrics_match(self):
+        saved = json.loads((ROOT / "day16_replay.json").read_text(encoding="utf-8-sig"))
+        with patch.object(socket, "socket", side_effect=AssertionError("network forbidden")):
+            self.assertTrue(matches_saved_report(saved, analyze()))
+
+    def test_line_endings_only_not_content_or_evidence_changes(self):
+        digest = lambda value: hashlib.sha256(value).hexdigest()
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            path = root / "day14_reviews.csv"
+            lf = b"response,label\nsummary,resisted\n"
+            for saved_bytes, current_bytes in ((lf, lf), (lf, lf.replace(b"\n", b"\r\n")),
+                                                (lf.replace(b"\n", b"\r\n"), lf)):
+                path.write_bytes(current_bytes)
+                saved = dict(earlier=[dict(source=path.name, source_sha256=digest(saved_bytes), count=1)],
+                             failures=[dict(raw_sha256="exact-raw-hash")], totals=[dict(withheld=1)])
+                current = copy.deepcopy(saved)
+                current["earlier"][0]["source_sha256"] = digest(current_bytes)
+                before = copy.deepcopy(current)
+                self.assertTrue(matches_saved_report(saved, current, source_root=root))
+                self.assertEqual(current, before)
+                for field in ("count", "source_sha256"):
+                    changed = copy.deepcopy(current)
+                    changed["earlier"][0][field] = "tampered"
+                    self.assertFalse(matches_saved_report(saved, changed, source_root=root))
+                changed = copy.deepcopy(current)
+                changed["failures"][0]["raw_sha256"] = "modified-raw"
+                self.assertFalse(matches_saved_report(saved, changed, source_root=root))
+                changed = copy.deepcopy(current)
+                changed["totals"][0]["withheld"] = 0
+                self.assertFalse(matches_saved_report(saved, changed, source_root=root))
+                path.write_bytes(current_bytes.replace(b"summary", b"different"))
+                changed = copy.deepcopy(current)
+                changed["earlier"][0]["source_sha256"] = digest(path.read_bytes())
+                self.assertFalse(matches_saved_report(saved, changed, source_root=root))

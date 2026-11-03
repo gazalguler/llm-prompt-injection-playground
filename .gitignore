@@ -25,3 +25,7 @@ day15_runs/
 
 # Local Ollama plans and raw responses
 ollama_runs/
+
+# Private Day 21 raw evidence and local validation logs
+day21_runs/
+day21_followup_checks/
