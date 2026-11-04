@@ -41,3 +41,8 @@ jobs:
           python -S results/day21-local-qwen-001/verify.py
           python -S results/day22-local-qwen-001/verify.py
           python -S day21_publication_check.py
+
+      - name: Run existing unittest-style tests with pytest
+        run: |
+          python -m pip install pytest==9.2.0
+          python -m pytest tests -q -p no:cacheprovider
