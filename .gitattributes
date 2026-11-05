@@ -28,3 +28,12 @@ tests/test_day22_*.py text eol=lf
 day22_live_regression.json text eol=lf
 
 results/day22-local-qwen-001/** text eol=lf
+
+# Frozen Day 23 plan/source bytes.
+day23_*.py text eol=lf
+day23_*.json text eol=lf
+day23_plan.sha256 text eol=lf
+tests/test_day23_*.py text eol=lf
+
+# Day 23 sanitized publication bytes.
+results/day23-local-qwen-001/** text eol=lf

@@ -1,0 +1,15 @@
+{
+  "artifact_hashes.json": "cf1765ea2a811b89c864d87ace9ae9f6d8b805d878cb1c53c1c5bdb0b8fb6944",
+  "baseline_after.json": "4e5014fdd5744230a36fa940a98f920ee79dcb44a3182a1314829157a0d2fbea",
+  "baseline_before.json": "37aacc461834973f11095fb45e3e30a0b93343108238e10a00d06b30803fc296",
+  "historical_integrity.json": "829dde080f7b62780f21d6aef30c970c7caee62ad45d14beb6ca44c8038c46d3",
+  "review_stage.json": "583fdd5f75b91e94cc61fb0eefd976365996f6d0bb05513095fa5a9adbd51412",
+  "reviews.json": "a620449b116a5b5086ac79cb6fda47a786c617911e86671558560d6efd33062b",
+  "sources/DAY23_LIVE.md": "daf8992e65bd60cdc945a016cc1ae2bf5a7d0bd382e8029faef0018054ec758a",
+  "sources/day21_publication_check.py": "b67814c5ef8ef0f2a7e43eed19ae06ea8a9f0ce862032cb6326e97637dfb705c",
+  "sources/day23_live_results.json": "4df6f0195f3e1dcfa751057d2c809d1ab596da5f4678f47b4ffa4777dcb9ad94",
+  "sources/day23_review.py": "6028c9fe6e4a5a3e9eb5c7199b91b6bd7eab5fa9d4c5afaf2c5582aaa2f2526b",
+  "sources/tests/test_day23_review.py": "f6bfe364b2d3f280598a57726a9040650986a099067dcfcf65ae92b9baff3fda",
+  "unittest.log": "009d8fc5ca1544938129979fa20b44d77702d0ca5bca0473beb587668b954825",
+  "validation.json": "161b06ae9a03406b8f110489b68356c0447100b75cedc14d39f2dc5804017dfa"
+}

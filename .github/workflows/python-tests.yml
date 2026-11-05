@@ -34,12 +34,14 @@ jobs:
           python -S day19_analysis.py --check
           python -S day21_analysis.py --check
           python -S day22_analysis.py --check
+          python -S day23_evaluate.py --check
 
       - name: Verify sanitized local result packages offline
         run: |
           python -S results/local-qwen-proposed-001/verify.py
           python -S results/day21-local-qwen-001/verify.py
           python -S results/day22-local-qwen-001/verify.py
+          python -S results/day23-local-qwen-001/verify.py
           python -S day21_publication_check.py
 
       - name: Run existing unittest-style tests with pytest

@@ -5,6 +5,28 @@ import subprocess
 
 ROOT = Path(__file__).resolve().parent
 STAGING_FILES = (
+    'results/day23-local-qwen-001/REPORT.md',
+    'results/day23-local-qwen-001/SHA256SUMS.json',
+    'results/day23-local-qwen-001/day21_gate.py',
+    'results/day23-local-qwen-001/day22_gate.py',
+    'results/day23-local-qwen-001/evidence.json',
+    'results/day23-local-qwen-001/plan.json',
+    'results/day23-local-qwen-001/plan.sha256',
+    'results/day23-local-qwen-001/provenance.json',
+    'results/day23-local-qwen-001/rejection_analysis.json',
+    'results/day23-local-qwen-001/review_manifest.json',
+    'results/day23-local-qwen-001/review_stage.json',
+    'results/day23-local-qwen-001/reviews.json',
+    'results/day23-local-qwen-001/run_manifest.json',
+    'results/day23-local-qwen-001/summary.json',
+    'results/day23-local-qwen-001/verify.py',
+    'DAY23_PUBLICATION.md',
+    'DAY24_PROPOSAL.md',
+    'tests/test_day23_publication.py',
+
+    "DAY23_LIVE.md", "day23_review.py", "day23_live_results.json", "tests/test_day23_review.py",
+    "DAY23.md", "day23_evaluate.py", "day23_plan.json", "day23_plan.sha256",
+    "day23_cases.json", "day23_offline.json", "tests/test_day23_evaluate.py",
     'tests/test_day22_publication.py',
     'DAY22_PUBLICATION.md',
     'results/day22-local-qwen-001/REPORT.md',
@@ -26,7 +48,7 @@ STAGING_FILES = (
     "results/day21-local-qwen-001/summary.json", "results/day21-local-qwen-001/verify.py",
     "results/day21-local-qwen-001/SHA256SUMS.json",
 )
-PRIVATE_DIRS = ("day21_runs", "day21_followup_checks", "ollama_runs", "day14_runs")
+PRIVATE_DIRS = ("day23_runs", "day21_runs", "day21_followup_checks", "ollama_runs", "day14_runs")
 # Deliberately bounded patterns; this is not an exhaustive secret detector.
 RULES = {
     "provider_token": re.compile(r"\b(?:sk-[A-Za-z0-9_-]{20,}|gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}|AIza[A-Za-z0-9_-]{30,}|AKIA[A-Z0-9]{16})\b"),

@@ -370,3 +370,18 @@ This is development regression, not held-out defense validation; model resistanc
 remains 0/4. See [Day 22 details](DAY22.md).
 
 [Day 22 sanitized live results and offline correction](results/day22-local-qwen-001/REPORT.md) include both phases, case evidence and an offline verifier.
+
+
+## Day 23: Unseen Attack Evaluation — Negative Result
+
+The frozen Day 22 gate withheld all eight new local Qwen3 responses: compromised
+attack blocking 4/4, clean-control release 0/4, false blocks 3/3 clean-correct
+controls, and safe released completion 0/8. Model resistance was 0/4, with 2/4 full
+attack successes and 2/4 partial compliances. One clean control invented a database
+failure cause; it is excluded from the false-block denominator. No post-hoc gate
+correction is included.
+
+See the [sanitized case evidence and standalone offline verifier](results/day23-local-qwen-001/REPORT.md),
+[original live report](DAY23_LIVE.md), [publication review](DAY23_PUBLICATION.md),
+and [Day 24 structured-fact recovery proposal](DAY24_PROPOSAL.md). The latter is
+design only; no recovery implementation or evaluation is credited to Day 23.

@@ -29,3 +29,6 @@ ollama_runs/
 # Private Day 21 raw evidence and local validation logs
 day21_runs/
 day21_followup_checks/
+
+# Private Day 23 local-only raw evaluation evidence
+day23_runs/
