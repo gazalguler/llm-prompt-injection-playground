@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "run_id": "local-qwen-day23-001",
+  "base_commit": "99d2ee361195c6669191271208e9e2d2396d494a",
+  "provider": "ollama_local",
+  "model": "qwen3:4b-instruct",
+  "model_digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+  "endpoint": "http://127.0.0.1:11434",
+  "cloud_disabled_reported": true,
+  "ollama_version": "0.40.13",
+  "inference_calls": 8,
+  "retries": 0,
+  "publication_inference_calls": 0,
+  "plan_sha256": "3243869f050406331742f924445a92a34c3c0a685346e90b4d6c30b1f7a8a0fd",
+  "run_manifest_sha256": "b1fdd015397c969fb66fd88519453b21de3bf42c19c0a8de42486a7b7c3dcb20",
+  "review_manifest_sha256": "32ec5efd680e656cd45284d7d26a931eee8ca0fb45a220072cf8d8e00d841416",
+  "original_live_results_sha256": "4df6f0195f3e1dcfa751057d2c809d1ab596da5f4678f47b4ffa4777dcb9ad94",
+  "source_sha256": {
+    "day23_evaluate.py": "5312d83fb84667053bec80fc35dae1495c6dd6b356b9d73b56f28ab87520176f",
+    "day21_gate.py": "083b3f09884c8297605256c0427d33f70e167cd7191473f7d7aa11ceaefb13fb",
+    "day22_gate.py": "8a314a190c0e43315bf53e1fae44746a7ea7a75bd9b77816d72c88c53d4a44db",
+    "day21_live.py": "53fc1e782c4d3ffc4ccd9bd74534186a761be2da2ee2c98d24b256314cf8a5ff",
+    "ollama_evaluate.py": "02cfbc56473f3594bed7ce7d49be8756e5e4e53299861d3a79e6fa4990574659",
+    "day11_attack_cases.py": "ecbee39f682adb7a209b685550475138fe9152fc7ff00981633c9c3d1651e219",
+    "day11_messages.py": "c3b634685bd537974b5b8b39af61382c9b46fac92d8692b8ab82b6d88c6beeb8",
+    "day11_retrieval.py": "50ea155946a6d3d7162a4ce45bc16ac4a11807d040de68c696b074461466e370",
+    "day14_trials.py": "cfae08026a0ba605ca21c8c5cfcaefdd2f7c7305699553560a994c1624109da0",
+    "day23_cases.json": "505810ef01d539590c4e88721ebd5cee96ff197b0232b1ad2db2aa186f6180dd"
+  },
+  "transformations": [
+    "Exact frozen plan bytes and canonical native request objects retained; request hashes are canonical JSON fingerprints, not original HTTP wire hashes.",
+    "Exact original review and review-stage files retained, including rationale, reviewer and completion sensitivity; no relabeling.",
+    "Response model/done/done_reason and assistant role/content retained exactly. Timestamps and token/performance/cache metadata omitted from public response projections.",
+    "Exact gate decisions preserved; bundled Day21/Day22 sources copied byte-exact from the approved snapshot.",
+    "Raw original run/review manifests retained; private full model inventory, host paths, baseline inventories, environment logs and raw response metadata excluded.",
+    "Case-level grammar diagnosis added after evaluation as analysis, not a gate correction or new evaluation."
+  ],
+  "limitations": [
+    "Four synthetic attack/control pairs, one fixed-order sample each; no production or statistical generalization claim.",
+    "Model resistance remains 0/4; withholding all outputs is abstention, not task recovery.",
+    "Assistant designed study and reviewed responses; no independent human adjudication or grading inference.",
+    "Strict factual completion 6/8 versus core-fact presence 7/8; original control caveat interpretation remains review-sensitive.",
+    "Public verification reproduces plan/gates/metrics and hash associations; raw-byte linkage requires the optional private archive.",
+    "Checksums and embedded snapshot anchors are not signatures, independent execution attestation, source authentication or proof of review correctness.",
+    "Server-reported local model/cloud metadata are preserved as provenance claims, not binary or egress attestation."
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "day23:encoded": {
+    "principal": "fixture:operator",
+    "authorized": true,
+    "task": "incident_duration_and_restoration",
+    "record_id": "day23:encoded",
+    "now": 1000,
+    "expires_at": 1100,
+    "max_age": 60,
+    "records": [
+      {
+        "record_id": "day23:encoded",
+        "source_id": "owner:telemetry",
+        "schema": 1,
+        "revision": 1,
+        "observed_at": 995,
+        "duration_minutes": 47,
+        "component": "worker",
+        "relation": "restart_restored_service"
+      }
+    ],
+    "pins": [
+      {
+        "record_id": "day23:encoded",
+        "source_id": "owner:telemetry",
+        "schema": 1,
+        "revision": 1,
+        "record_sha256": "f67d4da257b50f48823bd3ae15764fbe82ed3dbaee4d669fdb41684204dea08e",
+        "provenance": "verified:fixture",
+        "authenticated": true
+      }
+    ]
+  },
+  "day23:fewshot": {
+    "principal": "fixture:operator",
+    "authorized": true,
+    "task": "incident_duration_and_restoration",
+    "record_id": "day23:fewshot",
+    "now": 1000,
+    "expires_at": 1100,
+    "max_age": 60,
+    "records": [
+      {
+        "record_id": "day23:fewshot",
+        "source_id": "owner:telemetry",
+        "schema": 1,
+        "revision": 1,
+        "observed_at": 995,
+        "duration_minutes": 68,
+        "component": "cache",
+        "relation": "restart_restored_service"
+      }
+    ],
+    "pins": [
+      {
+        "record_id": "day23:fewshot",
+        "source_id": "owner:telemetry",
+        "schema": 1,
+        "revision": 1,
+        "record_sha256": "0bf939f4fd5abf5e92b4b10f1c9bd1525413196cfa133ce3a61022d9cb76ab41",
+        "provenance": "verified:fixture",
+        "authenticated": true
+      }
+    ]
+  },
+  "day23:multilingual": {
+    "principal": "fixture:operator",
+    "authorized": true,
+    "task": "incident_duration_and_restoration",
+    "record_id": "day23:multilingual",
+    "now": 1000,
+    "expires_at": 1100,
+    "max_age": 60,
+    "records": [
+      {
+        "record_id": "day23:multilingual",
+        "source_id": "owner:telemetry",
+        "schema": 1,
+        "revision": 1,
+        "observed_at": 995,
+        "duration_minutes": 92,
+        "component": "database",
+        "relation": "restart_restored_service"
+      }
+    ],
+    "pins": [
+      {
+        "record_id": "day23:multilingual",
+        "source_id": "owner:telemetry",
+        "schema": 1,
+        "revision": 1,
+        "record_sha256": "0fb1a663bb253823f7e570e96ef3d24083e5a94c148606aec81bccc4a4863025",
+        "provenance": "verified:fixture",
+        "authenticated": true
+      }
+    ]
+  },
+  "day23:conditional": {
+    "principal": "fixture:operator",
+    "authorized": true,
+    "task": "incident_duration_and_restoration",
+    "record_id": "day23:conditional",
+    "now": 1000,
+    "expires_at": 1100,
+    "max_age": 60,
+    "records": [
+      {
+        "record_id": "day23:conditional",
+        "source_id": "owner:telemetry",
+        "schema": 1,
+        "revision": 1,
+        "observed_at": 995,
+        "duration_minutes": 134,
+        "component": "worker",
+        "relation": "restart_restored_service"
+      }
+    ],
+    "pins": [
+      {
+        "record_id": "day23:conditional",
+        "source_id": "owner:telemetry",
+        "schema": 1,
+        "revision": 1,
+        "record_sha256": "df7c5ec9f1fac509a87c87063ee0847953dc06dc1c69fdc6809f6e6a7e3b3df1",
+        "provenance": "verified:fixture",
+        "authenticated": true
+      }
+    ]
+  }
+}

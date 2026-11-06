@@ -1,0 +1,52 @@
+{
+  "study": "Day 24 deterministic owner-controlled recovery",
+  "additional_inference_calls": 0,
+  "snapshot_sha256": {
+    "snapshot/day21_gate.py": "083b3f09884c8297605256c0427d33f70e167cd7191473f7d7aa11ceaefb13fb",
+    "snapshot/day22_gate.py": "8a314a190c0e43315bf53e1fae44746a7ea7a75bd9b77816d72c88c53d4a44db",
+    "snapshot/day23_live_results.json": "4df6f0195f3e1dcfa751057d2c809d1ab596da5f4678f47b4ffa4777dcb9ad94",
+    "snapshot/day23_plan.json": "3243869f050406331742f924445a92a34c3c0a685346e90b4d6c30b1f7a8a0fd",
+    "snapshot/day23_plan.sha256": "7f8e1d386eca9ff050951652d11ce8f33fd83f368d4085edd87ef5547fa56d28",
+    "snapshot/day24_cases.json": "78a7e8bfc1403b40e821c927ff96c5b0e4c02438693bf6de9dd8e5a8e41859b3",
+    "snapshot/day24_offline.json": "f4c6fa56e96792d67c0cca0f624b78e7afb0040cf85822e2a7d22c80c2a34d88",
+    "snapshot/day24_owner_fixtures.json": "689e0fb95cc111aa123a54eb790394c95018c8bbca62d59f2e4479501c857dc1",
+    "snapshot/day24_recovery.py": "6b567e2de49eeef63fbcefc8851a9baa2f2b6aaec6f96d5c3fea004edf227024",
+    "snapshot/day24_replay.py": "32b36139634e37ed6831fc3f84c61517864c822d75773f08295d0dd18962a1ac",
+    "snapshot/results/day23-local-qwen-001/REPORT.md": "162d608a82f3cd9dab2ef6bfba388548a05e05dcfb65602ae527ffb86bf61c31",
+    "snapshot/results/day23-local-qwen-001/SHA256SUMS.json": "2dedad89bbb7014e720a8b01b4864359dfafb7f532040fd4ed6003057ac97129",
+    "snapshot/results/day23-local-qwen-001/day21_gate.py": "083b3f09884c8297605256c0427d33f70e167cd7191473f7d7aa11ceaefb13fb",
+    "snapshot/results/day23-local-qwen-001/day22_gate.py": "8a314a190c0e43315bf53e1fae44746a7ea7a75bd9b77816d72c88c53d4a44db",
+    "snapshot/results/day23-local-qwen-001/evidence.json": "004200106d373b0e2c981a4bc6ec0fc6eaef8c437f5fdd69c46e1fa36f829c01",
+    "snapshot/results/day23-local-qwen-001/plan.json": "3243869f050406331742f924445a92a34c3c0a685346e90b4d6c30b1f7a8a0fd",
+    "snapshot/results/day23-local-qwen-001/plan.sha256": "7f8e1d386eca9ff050951652d11ce8f33fd83f368d4085edd87ef5547fa56d28",
+    "snapshot/results/day23-local-qwen-001/provenance.json": "50e7c21563896284ad273fbaaa6c720f6536a6c84e50a077dbc80ea481c75d8a",
+    "snapshot/results/day23-local-qwen-001/rejection_analysis.json": "b0b421c5d69f625bf6cf91543230b3ee4bf85d64060f88c01a330c9245d6688f",
+    "snapshot/results/day23-local-qwen-001/review_manifest.json": "32ec5efd680e656cd45284d7d26a931eee8ca0fb45a220072cf8d8e00d841416",
+    "snapshot/results/day23-local-qwen-001/review_stage.json": "583fdd5f75b91e94cc61fb0eefd976365996f6d0bb05513095fa5a9adbd51412",
+    "snapshot/results/day23-local-qwen-001/reviews.json": "a620449b116a5b5086ac79cb6fda47a786c617911e86671558560d6efd33062b",
+    "snapshot/results/day23-local-qwen-001/run_manifest.json": "b1fdd015397c969fb66fd88519453b21de3bf42c19c0a8de42486a7b7c3dcb20",
+    "snapshot/results/day23-local-qwen-001/summary.json": "54895421347ac7bd28ce19ec6029127d19e7e33c8479809e44386c7798a98b96",
+    "snapshot/results/day23-local-qwen-001/verify.py": "92c7ee7bf5233600de40613d9d447c25aaffb1a425f0b3e72b1d7f9af96144ce",
+    "snapshot/tests/test_day24_recovery.py": "d73fbb267e9fb0a80e752971f17bee8568b402cde1b1c9e2a4055680ba2a3bf0"
+  },
+  "source_hash_convention": "Exact published UTF-8 LF bytes; original replay uses LF-normalized source digests.",
+  "transformations": [
+    "Byte-exact frozen Day 24 source, fixtures, tests and replay report.",
+    "Byte-exact prior sanitized Day 23 package and caller plan/results; no private raw archives copied.",
+    "Case projection adds original candidate, review, gate, synthetic owner snapshots and new recovery outcome.",
+    "Summary recomputed separately with explicit denominators."
+  ],
+  "authentication_scope": "No real-world authentication, authorization service, credentials, telemetry or transactional delivery integration implemented or tested.",
+  "trust_assumptions": [
+    "Owner adapter supplies complete, correct, independently authenticated and authorized current records.",
+    "Authentication/provenance flags and simulated timestamps are authored fixtures, not real authentication evidence.",
+    "Adapter must hold authorization/revision lease through actual delivery."
+  ],
+  "limitations": [
+    "Development replay informed by Day 23 failures; authored synthetic fixtures are not held-out validation.",
+    "Original Qwen resistance stays 0/4; application recovery is not model resistance.",
+    "Correct deterministic rendering does not establish source truth, authenticity or completeness.",
+    "Copied raw hashes reference private bytes; standalone verification cannot prove private raw-byte linkage.",
+    "Checksums and embedded anchors are not signatures or independent attestation."
+  ]
+}

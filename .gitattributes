@@ -37,3 +37,11 @@ tests/test_day23_*.py text eol=lf
 
 # Day 23 sanitized publication bytes.
 results/day23-local-qwen-001/** text eol=lf
+
+# Day 24 deterministic development replay sources.
+day24_*.py text eol=lf
+day24_*.json text eol=lf
+tests/test_day24_*.py text eol=lf
+
+# Self-contained Day 24 frozen publication bytes.
+results/day24-offline-recovery-001/** text eol=lf

@@ -1,0 +1,78 @@
+{
+  "original_model": {
+    "resistance": {
+      "numerator": 0,
+      "denominator": 4
+    },
+    "full_success": {
+      "numerator": 2,
+      "denominator": 4
+    },
+    "partial_compliance": {
+      "numerator": 2,
+      "denominator": 4
+    }
+  },
+  "original_gate": {
+    "compromised_attack_blocks": {
+      "numerator": 4,
+      "denominator": 4
+    },
+    "clean_correct_false_blocks": {
+      "numerator": 3,
+      "denominator": 3
+    },
+    "safe_completion": {
+      "numerator": 0,
+      "denominator": 8
+    }
+  },
+  "recovery_historical": {
+    "eligible": {
+      "numerator": 8,
+      "denominator": 8
+    },
+    "accurate_completion": {
+      "numerator": 8,
+      "denominator": 8
+    },
+    "abstention": {
+      "numerator": 0,
+      "denominator": 8
+    },
+    "false_release": {
+      "numerator": 0,
+      "denominator": 8
+    },
+    "unsupported_claims": {
+      "numerator": 0,
+      "denominator": 8
+    }
+  },
+  "synthetic": {
+    "expectations_met": {
+      "numerator": 34,
+      "denominator": 34
+    },
+    "accurate_completion": {
+      "numerator": 9,
+      "denominator": 34
+    },
+    "abstention": {
+      "numerator": 25,
+      "denominator": 34
+    },
+    "false_abstention": {
+      "numerator": 0,
+      "denominator": 9
+    },
+    "false_release": {
+      "numerator": 0,
+      "denominator": 25
+    },
+    "unsupported_claims": {
+      "numerator": 0,
+      "denominator": 9
+    }
+  }
+}

@@ -385,3 +385,18 @@ See the [sanitized case evidence and standalone offline verifier](results/day23-
 [original live report](DAY23_LIVE.md), [publication review](DAY23_PUBLICATION.md),
 and [Day 24 structured-fact recovery proposal](DAY24_PROPOSAL.md). The latter is
 design only; no recovery implementation or evaluation is credited to Day 23.
+
+## Day 24: deterministic owner-controlled recovery (offline development)
+
+[Methodology and limitations](DAY24.md) · [replay](day24_offline.json).
+After discarding a blocked candidate, the application may render the authorized
+incident task from independently supplied typed owner facts, current revision pins
+and authenticated-source context. Missing, stale, conflicting or unauthorized
+inputs abstain. This is a separate system completion path, not improved Qwen
+resistance or evidence of source authenticity. No new inference was performed.
+Run `python -B -S day24_replay.py --check`; historical Day 23 evidence is unchanged.
+
+Day 24 publication: [case-level evidence and standalone verifier](results/day24-offline-recovery-001/REPORT.md),
+[publication review and exact Git file list](DAY24_PUBLICATION.md). Recovery is
+deterministic application behavior; original Qwen resistance remains 0/4.
+Authenticated real-world source integration is outside this experiment.
