@@ -400,3 +400,11 @@ Day 24 publication: [case-level evidence and standalone verifier](results/day24-
 [publication review and exact Git file list](DAY24_PUBLICATION.md). Recovery is
 deterministic application behavior; original Qwen resistance remains 0/4.
 Authenticated real-world source integration is outside this experiment.
+
+## Day 25: trusted-source authorization boundary (offline)
+
+[Design, scope and reproduction](DAY25.md). An explicit owner-controlled policy
+binds principal, task, incident, source, revision, digest and provenance before
+Day 24 recovery can release text. Spoofed sources, stale records, unauthorized
+revisions and policy changes abstain. Synthetic offline checks only; no production
+authentication or model-resistance improvement is claimed. No new inference.
