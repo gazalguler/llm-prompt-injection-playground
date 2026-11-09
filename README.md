@@ -408,3 +408,11 @@ binds principal, task, incident, source, revision, digest and provenance before
 Day 24 recovery can release text. Spoofed sources, stale records, unauthorized
 revisions and policy changes abstain. Synthetic offline checks only; no production
 authentication or model-resistance improvement is claimed. No new inference.
+
+## Day 26: authorization lease lifecycle (offline)
+
+[Methods, results and limits](DAY26.md). Owner-managed epochs, explicit lease
+revocation and bounded validity windows reject obsolete grants and changes before
+release. Mixed-source tests retain Day 25 authorization and Day 24 agreement
+checks. This is a synthetic offline simulation, with no live identity service
+or new model calls.
