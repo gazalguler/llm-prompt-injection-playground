@@ -416,3 +416,11 @@ revocation and bounded validity windows reject obsolete grants and changes befor
 release. Mixed-source tests retain Day 25 authorization and Day 24 agreement
 checks. This is a synthetic offline simulation, with no live identity service
 or new model calls.
+
+## Day 27: authorization at queue insertion (offline)
+
+[Implementation, checks and limits](DAY27.md). A process-local adapter serializes
+state updates with final authorization checks and insertion into an in-memory
+queue. Any intervening update invalidates the prepared ticket, including a change
+followed by restoration of the old values. Queue insertion is the tested boundary;
+external delivery and durable revocation remain outside this experiment. No new inference.
