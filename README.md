@@ -424,3 +424,12 @@ state updates with final authorization checks and insertion into an in-memory
 queue. Any intervening update invalidates the prepared ticket, including a change
 followed by restoration of the old values. Queue insertion is the tested boundary;
 external delivery and durable revocation remain outside this experiment. No new inference.
+
+## Day 28: delivery boundary and replay protection (offline)
+
+[Implementation, checks and limits](DAY28.md). A consumer rechecks the Day 27
+queued item's exact state and current authorization before receiving text.
+Recipient/task bindings and a process-local consumed-ID ledger prevent repeated
+handoffs of one delivery ID, including concurrent calls. Queue acceptance returns
+only a receipt. This is an in-memory simulation, with no network delivery,
+durable idempotency or new model inference.
