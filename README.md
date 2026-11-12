@@ -433,3 +433,11 @@ Recipient/task bindings and a process-local consumed-ID ledger prevent repeated
 handoffs of one delivery ID, including concurrent calls. Queue acceptance returns
 only a receipt. This is an in-memory simulation, with no network delivery,
 durable idempotency or new model inference.
+
+## Day 29: persistent replay protection and crash recovery (offline)
+
+[Implementation, checks and limits](DAY29.md). SQLite durably claims stable,
+trusted operation IDs before a simulated handoff. Restarted workers re-admit
+against current owner state; committed IDs remain consumed. Separate-process
+races have one winner. Crashes before commit permit retry; crashes after commit
+can lose the handoff and still block replay. This is not external delivery proof.
