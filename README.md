@@ -441,3 +441,12 @@ trusted operation IDs before a simulated handoff. Restarted workers re-admit
 against current owner state; committed IDs remain consumed. Separate-process
 races have one winner. Crashes before commit permit retry; crashes after commit
 can lose the handoff and still block replay. This is not external delivery proof.
+
+## Day 30: transactional outbox and crash recovery (offline)
+
+[Implementation, checks and limits](DAY30.md). A separate SQLite outbox stores
+the rendered intent and authorization context atomically. Workers revalidate
+current authority before claiming a time-limited lease; expired claims can be
+retried after restart, and acknowledgement tokens fence out stale workers.
+Retries reuse the operation ID. Lost acknowledgements can duplicate external
+side effects unless a receiver deduplicates that ID. No network or model calls.
