@@ -450,3 +450,12 @@ current authority before claiming a time-limited lease; expired claims can be
 retried after restart, and acknowledgement tokens fence out stale workers.
 Retries reuse the operation ID. Lost acknowledgements can duplicate external
 side effects unless a receiver deduplicates that ID. No network or model calls.
+
+## Day 31: receiver-side idempotency (offline)
+
+[Methods, results and limitations](DAY31.md). A SQLite receiver consumes Day 30
+outbox claims and commits the operation key, recipient/task/payload binding and
+simulated effect together. Matching retries acknowledge without another effect;
+changed bindings fail closed. Lost acknowledgements and process restarts are
+tested against the existing outbox. This protects local transactional effects;
+it does not provide exactly-once network delivery. No model calls.
