@@ -459,3 +459,12 @@ simulated effect together. Matching retries acknowledge without another effect;
 changed bindings fail closed. Lost acknowledgements and process restarts are
 tested against the existing outbox. This protects local transactional effects;
 it does not provide exactly-once network delivery. No model calls.
+
+## Day 32: end-to-end delivery reliability and failure injection (offline)
+
+[Methods, results and limitations](DAY32.md). A deterministic offline attempt
+runs the Day 30 outbox and Day 31 receiver together. Tests inject transport and
+database faults, replay duplicate messages, restart workers, and race retries.
+The simulation checks the recipient, task, operation key, lease token, and
+rendered payload before applying an effect. Receiver deduplication protects its
+SQLite transaction. End-to-end delivery and acknowledgement can still fail.
