@@ -468,3 +468,12 @@ database faults, replay duplicate messages, restart workers, and race retries.
 The simulation checks the recipient, task, operation key, lease token, and
 rendered payload before applying an effect. Receiver deduplication protects its
 SQLite transaction. End-to-end delivery and acknowledgement can still fail.
+
+## Day 33: fault injection and recovery invariants (offline)
+
+[Fault matrix, verification and limits](DAY33.md). Child processes stop before
+and after the queue, claim, receiver and acknowledgement commits. Tests reopen
+both SQLite databases and track which rows survive, when a lease can be
+reclaimed, and which retry can acknowledge it. They also check that an altered
+operation ID and revoked authority block retries without changing a committed
+effect, and that restoring transport cannot undo retry exhaustion.
