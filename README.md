@@ -477,3 +477,11 @@ both SQLite databases and track which rows survive, when a lease can be
 reclaimed, and which retry can acknowledge it. They also check that an altered
 operation ID and revoked authority block retries without changing a committed
 effect, and that restoring transport cannot undo retry exhaustion.
+
+## Day 34 — Recovery state machine and model-based testing (offline)
+
+[State model, sequence coverage and results](DAY34.md). An independent
+in-memory model predicts the outcome and persisted rows for 125 three-slot
+delivery schedules. Focused traces check acknowledgement fencing, authorization
+changes, receiver payload binding, and two workers contending for an expired
+lease after reopening the databases.
