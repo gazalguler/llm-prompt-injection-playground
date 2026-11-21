@@ -84,7 +84,9 @@ class RecoveryModel:
         self.last_time = now
         return True
 
-    def receive(self, text):
+    def receive(self, text, *, recipient=RECIPIENT):
+        if recipient != RECIPIENT:
+            return None
         if self.effect is not None:
             return 'duplicate' if text == self.effect else None
         self.effect = text
@@ -107,7 +109,7 @@ class RecoveryModel:
         return ('done', results)
 
 
-class RecoveryModelTests(unittest.TestCase):
+class RecoveryModelHarness:
     def provision(self, directory):
         self.sender_path = Path(directory) / 'sender.sqlite'
         self.receiver_path = Path(directory) / 'receiver.sqlite'
@@ -185,13 +187,13 @@ class RecoveryModelTests(unittest.TestCase):
         self.assertEqual(self.box.ack(claim, now=now), expected)
         self.assert_snapshot()
 
-    def receive(self, generation, minutes):
+    def receive(self, generation, minutes, *, recipient=RECIPIENT):
         claim = self.claims[generation]
         text = payload(minutes)
         if minutes != 23:
             claim = replace(claim, outcome=replace(claim.outcome, text=text))
-        self.assertEqual(self.receiver.receive(claim, recipient=RECIPIENT, task=TASK),
-                         self.model.receive(text))
+        self.assertEqual(self.receiver.receive(claim, recipient=recipient, task=TASK),
+                         self.model.receive(text, recipient=recipient))
         self.assert_snapshot()
 
     def update(self, access):
@@ -199,9 +201,10 @@ class RecoveryModelTests(unittest.TestCase):
         self.box.update(self.states[access])
         self.assert_snapshot()
 
-    def attempt(self, mode, now):
-        transport_type = ChangedFrameTransport if mode == 'changed_frame' else OfflineTransport
-        transport = transport_type(ATTEMPTS[mode])
+    def attempt(self, mode, now, *, transport=None):
+        if transport is None:
+            transport_type = ChangedFrameTransport if mode == 'changed_frame' else OfflineTransport
+            transport = transport_type(ATTEMPTS[mode])
         claims = []
         original_claim = self.box.claim
 
@@ -221,6 +224,8 @@ class RecoveryModelTests(unittest.TestCase):
         self.observe_claim(generation, claim)
         self.assert_snapshot()
 
+
+class RecoveryModelTests(RecoveryModelHarness, unittest.TestCase):
     def test_all_three_attempt_fault_sequences(self):
         for sequence in product(ATTEMPTS, repeat=3):
             with self.subTest(sequence=sequence), TemporaryDirectory() as directory:

@@ -485,3 +485,10 @@ in-memory model predicts the outcome and persisted rows for 125 three-slot
 delivery schedules. Focused traces check acknowledgement fencing, authorization
 changes, receiver payload binding, and two workers contending for an expired
 lease after reopening the databases.
+
+## Day 35 — Seeded randomized state transitions (offline)
+
+[Method, results and replay command](DAY35.md). The Day 34 reference model
+checks operation results and all three SQLite tables after each action in
+64 seeded traces. The traces vary timing, retries, authorization, receiver
+inputs and worker restarts.
