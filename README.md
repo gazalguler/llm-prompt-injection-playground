@@ -492,3 +492,10 @@ lease after reopening the databases.
 checks operation results and all three SQLite tables after each action in
 64 seeded traces. The traces vary timing, retries, authorization, receiver
 inputs and worker restarts.
+
+## Day 36 — Defensive mutation testing and regression quality (offline)
+
+Four changes to delivery result reporting were tested in temporary copies.
+The original regression suite detected three. A new test covers the remaining
+case and checks that a rejected transport leaves the pending intent available
+for delivery after reopening the databases. [Methods and results](DAY36.md).

@@ -155,18 +155,40 @@ if result != Attempt('done', ('duplicate',)):
         self.assertEqual(self.sender_rows(), [('pending', 0)] * 2 + [('leased', 1)] * len(changes))
 
     def test_invalid_route_or_key_and_unauthorized_retry_fail_closed(self):
+        pending = self.query(self.sender_path, 'SELECT * FROM outbox')
         for overrides in ({'recipient': 'owner:bob'}, {'task': 'different-task'},
                           {'operation_id': ''}, {'operation_id': 'unknown'}):
             with self.subTest(overrides=overrides):
                 self.assertEqual(self.attempt(1001, **overrides), Attempt('claim_unavailable'))
-        self.assertEqual(self.sender_rows(), [('pending', 0)])
+                self.assertEqual(self.query(self.sender_path, 'SELECT * FROM outbox'), pending)
+                self.assert_empty_receiver()
         self.assertEqual(self.attempt(1001, Fault.TRANSPORT_UNAVAILABLE),
                          Attempt('transport_unavailable'))
+        leased = self.query(self.sender_path, 'SELECT * FROM outbox')
+        original = self.state
         self.state = replace(self.state, authority=Authority(5, ('lease:27',)))
         self.restart()
         self.assertEqual(self.attempt(1006), Attempt('claim_unavailable'))
-        self.assertEqual(self.sender_rows(), [('leased', 1)])
+        self.assertEqual(self.query(self.sender_path, 'SELECT * FROM outbox'), leased)
         self.assert_empty_receiver()
+        self.state = original
+        self.restart()
+        self.assertEqual(self.attempt(1006), Attempt('done', ('applied',)))
+        self.assertEqual(self.sender_rows(), [('done', 2)])
+        self.assert_one_effect()
+
+    def test_invalid_transport_preserves_pending_intent_for_recovery(self):
+        pending = self.query(self.sender_path, 'SELECT * FROM outbox')
+        transport = OfflineTransport(Fault.NONE.value)
+        with patch.object(OfflineTransport, 'frames', autospec=True) as frames:
+            self.assertEqual(self.attempt(1001, transport=transport), Attempt('invalid_transport'))
+            frames.assert_not_called()
+        self.assertEqual(self.query(self.sender_path, 'SELECT * FROM outbox'), pending)
+        self.assert_empty_receiver()
+        self.restart()
+        self.assertEqual(self.attempt(1001), Attempt('done', ('applied',)))
+        self.assertEqual(self.sender_rows(), [('done', 1)])
+        self.assert_one_effect()
 
     def test_sender_claim_failure_leaves_receiver_untouched(self):
         with closing(sqlite3.connect(self.sender_path)) as db:
