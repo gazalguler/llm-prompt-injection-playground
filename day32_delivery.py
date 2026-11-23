@@ -2,6 +2,8 @@
 from dataclasses import dataclass
 from enum import Enum
 
+from day31_receiver import confirms_receipt
+
 
 class Fault(Enum):
     NONE = 'none'
@@ -56,14 +58,16 @@ def deliver(outbox, receiver, operation_id, *, recipient, task, now,
     The authorized claim stays in this call. No transport frame can establish
     authority or supply a receiver response. Each retry must claim again.
     """
-    if type(transport.fault) is not Fault:
+    fault = getattr(transport, 'fault', None)
+    build_frames = getattr(transport, 'frames', None)
+    if type(fault) is not Fault or not callable(build_frames):
         return Attempt('invalid_transport')
     claim = outbox.claim(operation_id, recipient=recipient, task=task, now=now)
     if claim is None:
         return Attempt('claim_unavailable')
 
     expected = Message(claim.operation_id, claim.token, recipient, task, claim.outcome.text)
-    frames = transport.frames(expected)
+    frames = build_frames(expected)
     if type(frames) is not tuple:
         return Attempt('invalid_message')
     if not frames:
@@ -74,10 +78,10 @@ def deliver(outbox, receiver, operation_id, *, recipient, task, now,
     results = []
     for frame in frames:
         result = receiver.receive(claim, recipient=frame.recipient, task=frame.task)
-        if result not in ('applied', 'duplicate'):
+        if not confirms_receipt(result):
             return Attempt('receiver_unconfirmed', tuple(results))
         results.append(result)
-    if transport.fault is Fault.LOST_ACK:
+    if fault is Fault.LOST_ACK:
         return Attempt('ack_lost', tuple(results))
     if not outbox.ack(claim, now=now):
         return Attempt('ack_unconfirmed', tuple(results))

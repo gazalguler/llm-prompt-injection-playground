@@ -21,7 +21,7 @@ from day32_delivery import Attempt, Fault, OfflineTransport, deliver
 from tests import test_day27_release as fixtures
 
 
-class DeliveryTests(unittest.TestCase):
+class DeliveryFixture:
     def setUp(self):
         directory = self.enterContext(TemporaryDirectory())
         self.sender_path = Path(directory) / 'sender.sqlite'
@@ -71,6 +71,8 @@ class DeliveryTests(unittest.TestCase):
         self.assertEqual(self.query(self.receiver_path, 'SELECT * FROM effects'),
                          [('job:32', payload)])
 
+
+class DeliveryTests(DeliveryFixture, unittest.TestCase):
     def test_lost_ack_and_duplicate_frames_across_restart(self):
         with patch.object(socket, 'socket', side_effect=AssertionError('offline only')):
             self.assertEqual(self.attempt(1001, Fault.LOST_ACK), Attempt('ack_lost', ('applied',)))

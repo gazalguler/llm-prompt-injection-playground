@@ -499,3 +499,10 @@ Four changes to delivery result reporting were tested in temporary copies.
 The original regression suite detected three. A new test covers the remaining
 case and checks that a rejected transport leaves the pending intent available
 for delivery after reopening the databases. [Methods and results](DAY36.md).
+
+## Day 37 — Contract testing and interface compatibility (offline)
+
+Seven regression tests cover malformed transport inputs, receiver responses,
+outbox lease and acknowledgement inputs, and compatibility of the existing
+SQLite definitions after reopening. The fixes tighten validation at those
+boundaries and preserve the stored formats. [Contracts, results and reproduction](DAY37.md).

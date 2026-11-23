@@ -65,7 +65,7 @@ class Receiver:
                 or not 1 <= len(claim.operation_id) <= 128
                 or type(recipient) is not str or type(task) is not str
                 or recipient != self.recipient or task != self.task
-                or not getattr(claim.outcome, 'released', False)
+                or getattr(claim.outcome, 'released', False) is not True
                 or type(getattr(claim.outcome, 'text', None)) is not str):
             return None
         binding = (recipient, task, claim.outcome.text)
@@ -86,11 +86,15 @@ class Receiver:
             return None
 
 
+def confirms_receipt(result):
+    return type(result) is str and result in ('applied', 'duplicate')
+
+
 def dispatch(outbox, receiver, operation_id, *, recipient, task, now):
     """Simulate claim -> receiver commit -> ack using the existing Day 30 outbox."""
     claim = outbox.claim(operation_id, recipient=recipient, task=task, now=now)
     if claim is None:
         return False
-    if receiver.receive(claim, recipient=recipient, task=task) is None:
+    if not confirms_receipt(receiver.receive(claim, recipient=recipient, task=task)):
         return False
     return outbox.ack(claim, now=now)

@@ -129,7 +129,7 @@ class Outbox:
                         return None
                     binding, text, accepted, status, until, attempts, last = row
                     if (binding != context(ticket.state) or text != result.text or now < max(accepted, last)
-                            or status == 'done' or (status == 'leased' and now < until)
+                            or status not in ('pending', 'leased') or (status == 'leased' and now < until)
                             or attempts >= max_attempts):
                         return None
                     token = uuid4().hex
@@ -143,7 +143,8 @@ class Outbox:
 
     def ack(self, claim, *, now):
         """A stale worker cannot acknowledge a later worker's lease."""
-        if type(claim) is not Claim or type(now) is not int:
+        if (type(claim) is not Claim or type(claim.operation_id) is not str
+                or type(claim.token) is not str or type(now) is not int):
             return False
         with self._lock:
             try:
