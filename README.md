@@ -506,3 +506,10 @@ Seven regression tests cover malformed transport inputs, receiver responses,
 outbox lease and acknowledgement inputs, and compatibility of the existing
 SQLite definitions after reopening. The fixes tighten validation at those
 boundaries and preserve the stored formats. [Contracts, results and reproduction](DAY37.md).
+
+## Day 38 — SQLite schema migration and backward compatibility (offline)
+
+Explicit migrations upgrade synthetic predecessor schemas to the existing
+outbox and receiver formats. The tests compare complete stored rows and
+exercise reopened workers, rejected inputs, and process exits on both sides
+of commit. [Design, results and reproduction](DAY38.md).

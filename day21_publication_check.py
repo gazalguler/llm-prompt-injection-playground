@@ -5,6 +5,7 @@ import subprocess
 
 ROOT = Path(__file__).resolve().parent
 STAGING_FILES = (
+    "DAY38.md", "day38_migration.py", "tests/test_day38_migration.py",
     "DAY37.md", "tests/test_day37_contracts.py",
     "DAY36.md", "day36_mutations.py",
     "DAY35.md", "tests/test_day35_randomized_recovery.py",
