@@ -513,3 +513,9 @@ Explicit migrations upgrade synthetic predecessor schemas to the existing
 outbox and receiver formats. The tests compare complete stored rows and
 exercise reopened workers, rejected inputs, and process exits on both sides
 of commit. [Design, results and reproduction](DAY38.md).
+
+## Day 39 — Independent SQLite migration and crash recovery (offline)
+
+Both upgrade orders preserve the delivery contract. Regression tests cover
+process exits, mixed schema versions, a conflicting effect payload, and
+receiver writer contention. [Architecture, results and reproduction](DAY39.md).
