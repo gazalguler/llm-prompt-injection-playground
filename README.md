@@ -519,3 +519,9 @@ of commit. [Design, results and reproduction](DAY38.md).
 Both upgrade orders preserve the delivery contract. Regression tests cover
 process exits, mixed schema versions, a conflicting effect payload, and
 receiver writer contention. [Architecture, results and reproduction](DAY39.md).
+
+## Day 40 — Performance benchmarking and reliability profiling (offline)
+
+Measure the SQLite outbox and receiver with synthetic queues, concurrent
+workers, and controlled retry, recovery, and lock scenarios. Run the benchmark
+with `python -S day40_benchmark.py`. [Method and measurements](DAY40.md).
